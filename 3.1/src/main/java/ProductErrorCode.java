@@ -1,4 +1,5 @@
 public enum ProductErrorCode {
+    EMPTY_NAME("A name must not be null or empty string"),
     NEGATIVE_WEIGHT("Weight must not be negative");
     
     
