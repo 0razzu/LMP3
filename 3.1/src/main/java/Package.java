@@ -4,13 +4,14 @@ import java.util.Objects;
 public class Package {
     private String name;
     private double weight;
+    private static final double EPS = 10E-6;
     
     
     public Package(String name, double weight) throws ProductException {
         if ((name == null) || (name.equals("")))
             throw new ProductException(ProductErrorCode.EMPTY_NAME);
         
-        if (weight < 0)
+        if (weight < EPS)
             throw new ProductException(ProductErrorCode.NEGATIVE_WEIGHT);
         
         this.name = name;
@@ -46,6 +47,6 @@ public class Package {
     
     @Override
     public String toString() {
-        return String.format("Package %s, weight: %f", name, weight);
+        return String.format("Package %s, weight: %.3f kg", name, weight);
     }
 }

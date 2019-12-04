@@ -1,5 +1,5 @@
 public class ProductException extends Exception {
-    public ProductErrorCode errorCode;
+    private ProductErrorCode errorCode;
     
     
     public ProductException(ProductErrorCode errorCode) {
