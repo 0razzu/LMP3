@@ -12,7 +12,7 @@ public class TestPackage {
     @Test
     public void testPackage() throws ProductException {
         Package package1 = new Package("Bubble wrap", 0.005);
-        Package package2 = new Package("Box", 10);
+        Package package2 = new Package("   Box ", 10);
         
         assertAll(
                 () -> assertEquals("Bubble wrap", package1.getName()),
