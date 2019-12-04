@@ -2,9 +2,9 @@ import java.util.Objects;
 
 
 public class Package {
+    private static final double EPS = 10E-6;
     private String name;
     private double weight;
-    private static final double EPS = 10E-6;
     
     
     public Package(String name, double weight) throws ProductException {
