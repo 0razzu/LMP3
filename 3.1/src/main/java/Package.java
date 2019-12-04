@@ -11,7 +11,7 @@ public class Package {
         if ((name == null) || (name.equals("")))
             throw new ProductException(ProductErrorCode.EMPTY_NAME);
         
-        if (weight < EPS)
+        if (weight <= EPS)
             throw new ProductException(ProductErrorCode.NEGATIVE_WEIGHT);
         
         this.name = name;
@@ -34,7 +34,7 @@ public class Package {
         if (this == o) return true;
         if (!(o instanceof Package)) return false;
         Package aPackage = (Package) o;
-        return Double.compare(aPackage.weight, weight) == 0 &&
+        return Math.abs(aPackage.weight - weight) <= EPS &&
                 name.equals(aPackage.name);
     }
     

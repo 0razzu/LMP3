@@ -54,13 +54,15 @@ public class TestPackage {
         Package package2 = new Package("Box", 10);
         Package package3 = new Package("Bubble wrap", 0.005);
         Package package4 = package1;
+        Package package5 = new Package("Bubble wrap", 0.0050001);
         
         assertAll(
                 () -> assertEquals(package1, package1),
                 () -> assertNotEquals(package1, package2),
                 () -> assertEquals(package1, package3),
                 () -> assertEquals(package1, package4),
-                () -> assertNotEquals(package1, null)
+                () -> assertNotEquals(package1, null),
+                () -> assertEquals(package1, package5)
         );
     }
     
