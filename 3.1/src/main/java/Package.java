@@ -8,13 +8,23 @@ public class Package {
     
     
     public Package(String name, double weight) throws ProductException {
+        setName(name);
+        setWeight(weight);
+    }
+    
+    
+    public void setName(String name) throws ProductException {
         if ((name == null) || (name.trim().equals("")))
             throw new ProductException(ProductErrorCode.EMPTY_NAME);
         
+        this.name = name.trim();
+    }
+    
+    
+    public void setWeight(double weight) throws ProductException {
         if (weight <= EPS)
             throw new ProductException(ProductErrorCode.NEGATIVE_WEIGHT);
         
-        this.name = name.trim();
         this.weight = weight;
     }
     

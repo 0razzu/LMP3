@@ -56,6 +56,20 @@ public class TestPackage {
     
     
     @Test
+    public void testPackageSetters() throws ProductException {
+        Package package1 = new Package("Bubble wrap", 0.005);
+        
+        package1.setName("Box");
+        package1.setWeight(10);
+        
+        assertAll(
+                () -> assertEquals("Box", package1.getName()),
+                () -> assertEquals(10, package1.getWeight(), EPS)
+        );
+    }
+    
+    
+    @Test
     public void testPackageEquals() throws ProductException {
         Package package1 = new Package("Bubble wrap", 0.005);
         Package package2 = new Package("Box", 10);
