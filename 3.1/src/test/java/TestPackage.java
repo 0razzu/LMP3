@@ -38,9 +38,16 @@ public class TestPackage {
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_NAME, e.getErrorCode());
         }
+        
+        try {
+            Package package3 = new Package("   ", 1);
+            fail();
+        } catch (ProductException e) {
+            assertEquals(ProductErrorCode.EMPTY_NAME, e.getErrorCode());
+        }
     
         try {
-            Package package3 = new Package("Bubble wrap", -1);
+            Package package4 = new Package("Bubble wrap", -1);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NEGATIVE_WEIGHT, e.getErrorCode());
