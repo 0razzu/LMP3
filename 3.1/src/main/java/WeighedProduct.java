@@ -16,6 +16,6 @@ public class WeighedProduct extends Product {
     
     @Override
     public String toString() {
-        return String.format("Weighed product %s, description: %s", name, description);
+        return String.format("Weighed product «%s», description: «%s»", name, description);
     }
 }

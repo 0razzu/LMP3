@@ -11,10 +11,15 @@ public class PieceProduct extends Product {
     
     
     public void setWeight(double weight) throws ProductException {
-        if (weight <= EPS)
-            throw new ProductException(ProductErrorCode.NEGATIVE_WEIGHT);
+        if (weight < EPS)
+            throw new ProductException(ProductErrorCode.NONPOSITIVE_WEIGHT);
     
         this.weight = weight;
+    }
+    
+    
+    public double getWeight() {
+        return weight;
     }
     
     
@@ -31,6 +36,6 @@ public class PieceProduct extends Product {
     
     @Override
     public String toString() {
-        return String.format("Piece product %s, description: %s", name, description);
+        return String.format("Piece product «%s», description: «%s», piece weight: %.3f kg", name, description, weight);
     }
 }

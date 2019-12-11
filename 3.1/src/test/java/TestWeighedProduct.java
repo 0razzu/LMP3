@@ -109,9 +109,9 @@ public class TestWeighedProduct {
     @Test
     public void testWeighedProductToString() throws ProductException {
         assertAll(
-                () -> assertEquals("Weighed product Juice, description: Not a juice indeed.",
+                () -> assertEquals("Weighed product «Juice», description: «Not a juice indeed.»",
                         new WeighedProduct("Juice", "Not a juice indeed.").toString()),
-                () -> assertEquals("Weighed product Cookies, description: Pretty little things that gonna make you fat.",
+                () -> assertEquals("Weighed product «Cookies», description: «Pretty little things that gonna make you fat.»",
                         new WeighedProduct("Cookies", "Pretty little things that gonna make you fat.").toString())
         );
     }

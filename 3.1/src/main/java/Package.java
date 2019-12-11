@@ -23,7 +23,7 @@ public class Package {
     
     public void setWeight(double weight) throws ProductException {
         if (weight <= EPS)
-            throw new ProductException(ProductErrorCode.NEGATIVE_WEIGHT);
+            throw new ProductException(ProductErrorCode.NONPOSITIVE_WEIGHT);
         
         this.weight = weight;
     }
@@ -57,6 +57,6 @@ public class Package {
     
     @Override
     public String toString() {
-        return String.format("Package %s, weight: %.3f kg", name, weight);
+        return String.format("Package «%s», weight: %.3f kg", name, weight);
     }
 }

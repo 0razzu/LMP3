@@ -50,7 +50,7 @@ public class TestPackage {
             Package package4 = new Package("Bubble wrap", -1);
             fail();
         } catch (ProductException e) {
-            assertEquals(ProductErrorCode.NEGATIVE_WEIGHT, e.getErrorCode());
+            assertEquals(ProductErrorCode.NONPOSITIVE_WEIGHT, e.getErrorCode());
         }
     }
     
@@ -93,8 +93,8 @@ public class TestPackage {
         Locale.setDefault(Locale.ENGLISH);
         
         assertAll(
-                () -> assertEquals("Package Bubble wrap, weight: 0.005 kg", new Package("Bubble wrap", 0.005).toString()),
-                () -> assertEquals("Package Box, weight: 10.000 kg", new Package("Box", 10).toString())
+                () -> assertEquals("Package «Bubble wrap», weight: 0.005 kg", new Package("Bubble wrap", 0.005).toString()),
+                () -> assertEquals("Package «Box», weight: 10.000 kg", new Package("Box", 10).toString())
         );
     }
 }
