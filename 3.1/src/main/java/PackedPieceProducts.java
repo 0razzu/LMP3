@@ -44,6 +44,11 @@ public class PackedPieceProducts implements PackedProduct {
     }
     
     
+    public int countProducts() {
+        return products.length;
+    }
+    
+    
     @Override
     public double getNetMass() {
         double mass = 0;
