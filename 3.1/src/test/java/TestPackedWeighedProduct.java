@@ -43,7 +43,7 @@ public class TestPackedWeighedProduct {
                     new WeighedProduct("Candies", "Liquorice & salt"), 0);
             fail();
         } catch (ProductException e) {
-            assertEquals(ProductErrorCode.NONPOSITIVE_WEIGHT, e.getErrorCode());
+            assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
         }
     
         try {
@@ -51,7 +51,7 @@ public class TestPackedWeighedProduct {
                     new WeighedProduct("Candies", "Liquorice & salt"), -2.5);
             fail();
         } catch (ProductException e) {
-            assertEquals(ProductErrorCode.NONPOSITIVE_WEIGHT, e.getErrorCode());
+            assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
         }
     }
     

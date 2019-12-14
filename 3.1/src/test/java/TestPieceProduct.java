@@ -75,14 +75,14 @@ public class TestPieceProduct {
             PieceProduct product7 = new PieceProduct("Something", "Something", -1);
             fail();
         } catch (ProductException e) {
-            assertEquals(ProductErrorCode.NONPOSITIVE_WEIGHT, e.getErrorCode());
+            assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
         }
     
         try {
             PieceProduct product8 = new PieceProduct("Something", "Something", 0);
             fail();
         } catch (ProductException e) {
-            assertEquals(ProductErrorCode.NONPOSITIVE_WEIGHT, e.getErrorCode());
+            assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
         }
     }
     

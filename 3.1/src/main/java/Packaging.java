@@ -23,7 +23,7 @@ public class Packaging {
     
     public void setMass(double mass) throws ProductException {
         if (mass <= EPS)
-            throw new ProductException(ProductErrorCode.NONPOSITIVE_WEIGHT);
+            throw new ProductException(ProductErrorCode.NONPOSITIVE_MASS);
         
         this.mass = mass;
     }

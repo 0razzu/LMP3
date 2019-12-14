@@ -50,7 +50,7 @@ public class TestPackaging {
             Packaging Packaging4 = new Packaging("Bubble wrap", -1);
             fail();
         } catch (ProductException e) {
-            assertEquals(ProductErrorCode.NONPOSITIVE_WEIGHT, e.getErrorCode());
+            assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
         }
     }
     

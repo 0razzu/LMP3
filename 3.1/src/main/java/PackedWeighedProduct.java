@@ -33,7 +33,7 @@ public class PackedWeighedProduct implements PackedProduct {
     
     private void setProductMass(double productMass) throws ProductException {
         if (productMass < EPS)
-            throw new ProductException(ProductErrorCode.NONPOSITIVE_WEIGHT);
+            throw new ProductException(ProductErrorCode.NONPOSITIVE_MASS);
         
         this.productMass = productMass;
     }
