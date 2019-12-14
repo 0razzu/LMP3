@@ -1,25 +1,25 @@
 import java.util.Objects;
 
 
-public class PackedWeighedProduct {
+public class PackedWeighedProduct implements PackedProduct {
     private static final double EPS = 10E-6;
-    private Package pack;
+    private Packaging packaging;
     private WeighedProduct product;
     private double productWeight;
     
     
-    public PackedWeighedProduct(Package pack, WeighedProduct product, double productWeight) throws ProductException {
-        setPackage(pack);
+    public PackedWeighedProduct(Packaging packaging, WeighedProduct product, double productWeight) throws ProductException {
+        setPackaging(packaging);
         setProduct(product);
         setProductWeight(productWeight);
     }
     
     
-    private void setPackage(Package pack) throws ProductException {
-        if (pack == null)
-            throw new ProductException(ProductErrorCode.NULL_PACKAGE);
+    private void setPackaging(Packaging packaging) throws ProductException {
+        if (packaging == null)
+            throw new ProductException(ProductErrorCode.NULL_PACKAGING);
         
-        this.pack = pack;
+        this.packaging = packaging;
     }
     
     
@@ -39,8 +39,9 @@ public class PackedWeighedProduct {
     }
     
     
-    public Package getPackage() {
-        return pack;
+    @Override
+    public Packaging getPackaging() {
+        return packaging;
     }
     
     
@@ -49,13 +50,15 @@ public class PackedWeighedProduct {
     }
     
     
+    @Override
     public double getNetMass() {
         return productWeight;
     }
     
     
+    @Override
     public double getGrossMass() {
-        return productWeight + pack.getWeight();
+        return productWeight + packaging.getWeight();
     }
     
     
@@ -65,13 +68,13 @@ public class PackedWeighedProduct {
         if (!(o instanceof PackedWeighedProduct)) return false;
         PackedWeighedProduct that = (PackedWeighedProduct) o;
         return Math.abs(that.productWeight - productWeight) < EPS &&
-                pack.equals(that.pack) &&
+                packaging.equals(that.packaging) &&
                 product.equals(that.product);
     }
     
     
     @Override
     public int hashCode() {
-        return Objects.hash(pack, product, productWeight);
+        return Objects.hash(packaging, product, productWeight);
     }
 }

@@ -2,7 +2,7 @@ public enum ProductErrorCode {
     EMPTY_DESCRIPTION("A description must not be null or empty string"),
     EMPTY_NAME("A name must not be null or empty string"),
     NONPOSITIVE_WEIGHT("Weight must not be negative or zero"),
-    NULL_PACKAGE("A package must not be null"),
+    NULL_PACKAGING("A packaging must not be null"),
     NULL_PRODUCT("A product must not be null");
     
     

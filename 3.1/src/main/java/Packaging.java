@@ -1,13 +1,13 @@
 import java.util.Objects;
 
 
-public class Package {
+public class Packaging {
     private static final double EPS = 10E-6;
     private String name;
     private double weight;
     
     
-    public Package(String name, double weight) throws ProductException {
+    public Packaging(String name, double weight) throws ProductException {
         setName(name);
         setWeight(weight);
     }
@@ -42,10 +42,10 @@ public class Package {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Package)) return false;
-        Package aPackage = (Package) o;
-        return Math.abs(aPackage.weight - weight) <= EPS &&
-                name.equals(aPackage.name);
+        if (!(o instanceof Packaging)) return false;
+        Packaging aPackaging = (Packaging) o;
+        return Math.abs(aPackaging.weight - weight) <= EPS &&
+                name.equals(aPackaging.name);
     }
     
     
@@ -57,6 +57,6 @@ public class Package {
     
     @Override
     public String toString() {
-        return String.format("Package «%s», weight: %.3f kg", name, weight);
+        return String.format("Packaging «%s», weight: %.3f kg", name, weight);
     }
 }
