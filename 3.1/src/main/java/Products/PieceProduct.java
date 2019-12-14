@@ -1,3 +1,6 @@
+package Products;
+
+
 public class PieceProduct extends Product {
     private static final double EPS = 10E-6;
     private double mass;

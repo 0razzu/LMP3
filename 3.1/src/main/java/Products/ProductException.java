@@ -1,3 +1,6 @@
+package Products;
+
+
 public class ProductException extends Exception {
     private ProductErrorCode errorCode;
     

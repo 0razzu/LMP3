@@ -1,4 +1,7 @@
-public interface PackedProduct {
+package Products;
+
+
+public interface Packed {
     public Packaging getPackaging();
     
     public double getNetMass();

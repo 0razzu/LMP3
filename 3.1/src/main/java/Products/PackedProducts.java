@@ -1,15 +1,18 @@
+package Products;
+
+
 import java.util.Arrays;
 import java.util.Objects;
 
 
-public class PackedPieceProducts implements PackedProduct {
+public class PackedProducts implements Packed {
     private Packaging packaging;
-    private PieceProduct[] products;
+    private Packed[] packeds;
     
     
-    public PackedPieceProducts(Packaging packaging, PieceProduct... products) throws ProductException {
+    public PackedProducts(Packaging packaging, Packed... packeds) throws ProductException {
         setPackaging(packaging);
-        setProducts(products);
+        setPackeds(packeds);
     }
     
     
@@ -21,15 +24,15 @@ public class PackedPieceProducts implements PackedProduct {
     }
     
     
-    private void setProducts(PieceProduct... products) throws ProductException {
-        if ((products == null) || (products.length == 0))
+    private void setPackeds(Packed[] packeds) throws ProductException {
+        if ((packeds == null) || (packeds.length == 0))
             throw new ProductException(ProductErrorCode.NULL_PRODUCT);
         
-        for (PieceProduct product: products)
-            if (product == null)
+        for (Packed packed: packeds)
+            if (packed == null)
                 throw new ProductException(ProductErrorCode.NULL_PRODUCT);
         
-        this.products = products;
+        this.packeds = packeds;
     }
     
     
@@ -39,13 +42,8 @@ public class PackedPieceProducts implements PackedProduct {
     }
     
     
-    public PieceProduct[] getProducts() {
-        return products;
-    }
-    
-    
-    public int countProducts() {
-        return products.length;
+    public Packed[] getPackeds() {
+        return packeds;
     }
     
     
@@ -53,8 +51,8 @@ public class PackedPieceProducts implements PackedProduct {
     public double getNetMass() {
         double mass = 0;
         
-        for (PieceProduct product: products)
-            mass += product.getMass();
+        for (Packed packed: packeds)
+            mass += packed.getGrossMass();
         
         return mass;
     }
@@ -69,30 +67,30 @@ public class PackedPieceProducts implements PackedProduct {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PackedPieceProducts)) return false;
-        PackedPieceProducts that = (PackedPieceProducts) o;
+        if (!(o instanceof PackedProducts)) return false;
+        PackedProducts that = (PackedProducts) o;
         return packaging.equals(that.packaging) &&
-                Arrays.equals(products, that.products);
+                Arrays.equals(packeds, that.packeds);
     }
     
     
     @Override
     public int hashCode() {
         int result = Objects.hash(packaging);
-        result = 31 * result + Arrays.hashCode(products);
+        result = 31 * result + Arrays.hashCode(packeds);
         return result;
     }
     
     
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Packed piece products:\n");
-        
-        for (PieceProduct product: products)
-            sb.append("    ").append(product).append(",\n");
-        
+        StringBuilder sb = new StringBuilder("Packed products:\n");
+    
+        for (Packed packed: packeds)
+            sb.append("    ").append(packed).append(",\n");
+    
         sb.append(packaging);
-        
+    
         return sb.toString();
     }
 }

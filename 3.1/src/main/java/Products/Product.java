@@ -1,3 +1,6 @@
+package Products;
+
+
 import java.util.Objects;
 
 
@@ -12,7 +15,7 @@ public class Product {
     }
     
     
-    public void setName(String name) throws ProductException {
+    protected void setName(String name) throws ProductException {
         if ((name == null) || (name.trim().equals("")))
             throw new ProductException(ProductErrorCode.EMPTY_NAME);
     
@@ -20,7 +23,7 @@ public class Product {
     }
     
     
-    public void setDescription(String description) throws ProductException {
+    protected void setDescription(String description) throws ProductException {
         if ((description == null) || (description.trim().equals("")))
             throw new ProductException(ProductErrorCode.EMPTY_DESCRIPTION);
     

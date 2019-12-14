@@ -1,3 +1,6 @@
+package Products;
+
+
 public enum ProductErrorCode {
     EMPTY_DESCRIPTION("A description must not be null or empty string"),
     EMPTY_NAME("A name must not be null or empty string"),

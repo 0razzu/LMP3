@@ -1,3 +1,6 @@
+package Products;
+
+
 public class WeighedProduct extends Product {
     public WeighedProduct(String name, String description) throws ProductException {
         super(name, description);

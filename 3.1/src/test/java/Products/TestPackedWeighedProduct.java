@@ -1,4 +1,12 @@
+package Products;
+
+
+import Products.ProductErrorCode;
+import Products.ProductException;
 import org.junit.jupiter.api.Test;
+import Products.PackedWeighedProduct;
+import Products.Packaging;
+import Products.WeighedProduct;
 
 import java.util.Locale;
 

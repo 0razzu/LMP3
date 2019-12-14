@@ -1,4 +1,11 @@
+package Products;
+
+
+import Products.ProductErrorCode;
+import Products.ProductException;
 import org.junit.jupiter.api.Test;
+import Products.Product;
+import Products.WeighedProduct;
 
 import static org.junit.jupiter.api.Assertions.*;
 

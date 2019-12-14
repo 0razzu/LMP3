@@ -1,4 +1,10 @@
+package Products;
+
+
+import Products.ProductErrorCode;
+import Products.ProductException;
 import org.junit.jupiter.api.Test;
+import Products.Product;
 
 import static org.junit.jupiter.api.Assertions.*;
 

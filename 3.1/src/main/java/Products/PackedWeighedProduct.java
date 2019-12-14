@@ -1,7 +1,10 @@
+package Products;
+
+
 import java.util.Objects;
 
 
-public class PackedWeighedProduct implements PackedProduct {
+public class PackedWeighedProduct implements Packed {
     private static final double EPS = 10E-6;
     private Packaging packaging;
     private WeighedProduct product;
