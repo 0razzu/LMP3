@@ -16,9 +16,9 @@ public class TestPackaging {
         
         assertAll(
                 () -> assertEquals("Bubble wrap", Packaging1.getName()),
-                () -> assertEquals(0.005, Packaging1.getWeight(), EPS),
+                () -> assertEquals(0.005, Packaging1.getMass(), EPS),
                 () -> assertEquals("Box", Packaging2.getName()),
-                () -> assertEquals(10, Packaging2.getWeight(), EPS)
+                () -> assertEquals(10, Packaging2.getMass(), EPS)
         );
     }
     
@@ -60,11 +60,11 @@ public class TestPackaging {
         Packaging Packaging1 = new Packaging("Bubble wrap", 0.005);
         
         Packaging1.setName("Box");
-        Packaging1.setWeight(10);
+        Packaging1.setMass(10);
         
         assertAll(
                 () -> assertEquals("Box", Packaging1.getName()),
-                () -> assertEquals(10, Packaging1.getWeight(), EPS)
+                () -> assertEquals(10, Packaging1.getMass(), EPS)
         );
     }
     
@@ -93,8 +93,8 @@ public class TestPackaging {
         Locale.setDefault(Locale.ENGLISH);
         
         assertAll(
-                () -> assertEquals("Packaging «Bubble wrap», weight: 0.005 kg", new Packaging("Bubble wrap", 0.005).toString()),
-                () -> assertEquals("Packaging «Box», weight: 10.000 kg", new Packaging("Box", 10).toString())
+                () -> assertEquals("Packaging «Bubble wrap», mass: 0.005 kg", new Packaging("Bubble wrap", 0.005).toString()),
+                () -> assertEquals("Packaging «Box», mass: 10.000 kg", new Packaging("Box", 10).toString())
         );
     }
 }

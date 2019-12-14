@@ -5,13 +5,13 @@ public class PackedWeighedProduct implements PackedProduct {
     private static final double EPS = 10E-6;
     private Packaging packaging;
     private WeighedProduct product;
-    private double productWeight;
+    private double productMass;
     
     
-    public PackedWeighedProduct(Packaging packaging, WeighedProduct product, double productWeight) throws ProductException {
+    public PackedWeighedProduct(Packaging packaging, WeighedProduct product, double productMass) throws ProductException {
         setPackaging(packaging);
         setProduct(product);
-        setProductWeight(productWeight);
+        setProductMass(productMass);
     }
     
     
@@ -31,11 +31,11 @@ public class PackedWeighedProduct implements PackedProduct {
     }
     
     
-    private void setProductWeight(double productWeight) throws ProductException {
-        if (productWeight < EPS)
+    private void setProductMass(double productMass) throws ProductException {
+        if (productMass < EPS)
             throw new ProductException(ProductErrorCode.NONPOSITIVE_WEIGHT);
         
-        this.productWeight = productWeight;
+        this.productMass = productMass;
     }
     
     
@@ -52,13 +52,13 @@ public class PackedWeighedProduct implements PackedProduct {
     
     @Override
     public double getNetMass() {
-        return productWeight;
+        return productMass;
     }
     
     
     @Override
     public double getGrossMass() {
-        return productWeight + packaging.getWeight();
+        return productMass + packaging.getMass();
     }
     
     
@@ -67,7 +67,7 @@ public class PackedWeighedProduct implements PackedProduct {
         if (this == o) return true;
         if (!(o instanceof PackedWeighedProduct)) return false;
         PackedWeighedProduct that = (PackedWeighedProduct) o;
-        return Math.abs(that.productWeight - productWeight) < EPS &&
+        return Math.abs(that.productMass - productMass) < EPS &&
                 packaging.equals(that.packaging) &&
                 product.equals(that.product);
     }
@@ -75,6 +75,6 @@ public class PackedWeighedProduct implements PackedProduct {
     
     @Override
     public int hashCode() {
-        return Objects.hash(packaging, product, productWeight);
+        return Objects.hash(packaging, product, productMass);
     }
 }

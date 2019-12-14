@@ -19,10 +19,10 @@ public class TestPieceProduct {
         assertAll(
                 () -> assertEquals("Huge pack of cookies", product1.getName()),
                 () -> assertEquals(description1, product1.getDescription()),
-                () -> assertEquals(20.5, product1.getWeight(), EPS),
+                () -> assertEquals(20.5, product1.getMass(), EPS),
                 () -> assertEquals("Carton of juice", product2.getName()),
                 () -> assertEquals(description2, product2.getDescription()),
-                () -> assertEquals(1, product2.getWeight(), EPS)
+                () -> assertEquals(1, product2.getMass(), EPS)
         );
     }
     
@@ -120,9 +120,9 @@ public class TestPieceProduct {
         
         assertAll(
                 () -> assertEquals("Piece product «Huge pack of cookies», description: «You’ll explode if you eat them all.», " +
-                                "piece weight: 20.500 kg",
+                                "piece mass: 20.500 kg",
                         new PieceProduct("Huge pack of cookies", "You’ll explode if you eat them all.", 20.5).toString()),
-                () -> assertEquals("Piece product «Carton of juice», description: «A carton of hidden happiness.», piece weight: 1.000 kg",
+                () -> assertEquals("Piece product «Carton of juice», description: «A carton of hidden happiness.», piece mass: 1.000 kg",
                         new PieceProduct("Carton of juice", "A carton of hidden happiness.", 1).toString())
         );
     }

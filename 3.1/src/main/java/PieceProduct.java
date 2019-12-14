@@ -1,25 +1,25 @@
 public class PieceProduct extends Product {
     private static final double EPS = 10E-6;
-    private double weight;
+    private double mass;
     
     
-    public PieceProduct(String name, String description, double weight) throws ProductException {
+    public PieceProduct(String name, String description, double mass) throws ProductException {
         super(name, description);
         
-        setWeight(weight);
+        setMass(mass);
     }
     
     
-    public void setWeight(double weight) throws ProductException {
-        if (weight < EPS)
+    public void setMass(double mass) throws ProductException {
+        if (mass < EPS)
             throw new ProductException(ProductErrorCode.NONPOSITIVE_WEIGHT);
     
-        this.weight = weight;
+        this.mass = mass;
     }
     
     
-    public double getWeight() {
-        return weight;
+    public double getMass() {
+        return mass;
     }
     
     
@@ -30,12 +30,12 @@ public class PieceProduct extends Product {
         PieceProduct pieceProduct = (PieceProduct) o;
         return name.equals(pieceProduct.name) &&
                 description.equals(pieceProduct.description) &&
-                Math.abs(pieceProduct.weight - weight) <= EPS;
+                Math.abs(pieceProduct.mass - mass) <= EPS;
     }
     
     
     @Override
     public String toString() {
-        return String.format("Piece product «%s», description: «%s», piece weight: %.3f kg", name, description, weight);
+        return String.format("Piece product «%s», description: «%s», piece mass: %.3f kg", name, description, mass);
     }
 }
