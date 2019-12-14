@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.Locale;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -82,6 +84,27 @@ public class TestPackedWeighedProduct {
                 () -> assertNotEquals(packedWeighedProduct5, packedWeighedProduct6),
                 () -> assertNotEquals(packedWeighedProduct2, packedWeighedProduct5),
                 () -> assertNotEquals(packedWeighedProduct1, packedWeighedProduct7)
+        );
+    }
+    
+    
+    @Test
+    public void testPackedWeighedProductToString() throws ProductException {
+        Locale.setDefault(Locale.ENGLISH);
+        
+        Packaging packaging1 = new Packaging("Cardboard box", 0.01);
+        Packaging packaging2 = new Packaging("Wooden box", 0.2);
+        WeighedProduct product1 = new WeighedProduct("Apples", "Manufacturer: Russia");
+        WeighedProduct product2 = new WeighedProduct("Tangerines", "Manufacturer: China");
+    
+        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(packaging1, product1, 10);
+        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(packaging2, product2, 5.5);
+        
+        assertAll(
+                () -> assertEquals("PackedWeighedProduct «Apples» in «Cardboard box», description: «Manufacturer: Russia», " +
+                        "net mass: 10.000 kg", packedWeighedProduct1.toString()),
+                () -> assertEquals("PackedWeighedProduct «Tangerines» in «Wooden box», description: «Manufacturer: China», " +
+                        "net mass: 5.500 kg", packedWeighedProduct2.toString())
         );
     }
 }
