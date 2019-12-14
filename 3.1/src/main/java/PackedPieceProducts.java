@@ -7,18 +7,28 @@ public class PackedPieceProducts implements PackedProduct {
     private PieceProduct[] products;
     
     
-    public PackedPieceProducts(Packaging packaging, PieceProduct[] products) throws ProductException {
+    public PackedPieceProducts(Packaging packaging, PieceProduct... products) throws ProductException {
         setPackaging(packaging);
         setProducts(products);
     }
     
     
-    private void setPackaging(Packaging packaging) {
+    private void setPackaging(Packaging packaging) throws ProductException {
+        if (packaging == null)
+            throw new ProductException(ProductErrorCode.NULL_PACKAGING);
+        
         this.packaging = packaging;
     }
     
     
-    private void setProducts(PieceProduct[] products) {
+    private void setProducts(PieceProduct... products) throws ProductException {
+        if ((products == null) || (products.length == 0))
+            throw new ProductException(ProductErrorCode.NULL_PRODUCT);
+        
+        for (PieceProduct product: products)
+            if (product == null)
+                throw new ProductException(ProductErrorCode.NULL_PRODUCT);
+        
         this.products = products;
     }
     
@@ -66,5 +76,18 @@ public class PackedPieceProducts implements PackedProduct {
         int result = Objects.hash(packaging);
         result = 31 * result + Arrays.hashCode(products);
         return result;
+    }
+    
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Packed piece products:\n");
+        
+        for (PieceProduct product: products)
+            sb.append("    ").append(product).append(",\n");
+        
+        sb.append(packaging);
+        
+        return sb.toString();
     }
 }

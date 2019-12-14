@@ -81,7 +81,7 @@ public class PackedWeighedProduct implements PackedProduct {
     
     @Override
     public String toString() {
-        return String.format("PackedWeighedProduct «%s» in «%s», description: «%s», net mass: %.3f kg",
+        return String.format("Packed weighed product «%s» in «%s», description: «%s», net mass: %.3f kg",
                 product.name, packaging.getName(), product.description, productMass);
     }
 }

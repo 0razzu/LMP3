@@ -68,7 +68,7 @@ public class TestPackedWeighedProduct {
         WeighedProduct product4 = new WeighedProduct("Tangerines", "Manufacturer: China");
         
         PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(packaging1, product1, 10);
-        PackedWeighedProduct packedWeighedProduct2 = packedWeighedProduct1;
+        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(packaging1, product1, 10);
         PackedWeighedProduct packedWeighedProduct3 = new PackedWeighedProduct(packaging2, product1, 10);
         PackedWeighedProduct packedWeighedProduct4 = new PackedWeighedProduct(packaging1, product2, 10);
         PackedWeighedProduct packedWeighedProduct5 = new PackedWeighedProduct(packaging1, product3, 10);
@@ -101,9 +101,9 @@ public class TestPackedWeighedProduct {
         PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(packaging2, product2, 5.5);
         
         assertAll(
-                () -> assertEquals("PackedWeighedProduct «Apples» in «Cardboard box», description: «Manufacturer: Russia», " +
+                () -> assertEquals("Packed weighed product «Apples» in «Cardboard box», description: «Manufacturer: Russia», " +
                         "net mass: 10.000 kg", packedWeighedProduct1.toString()),
-                () -> assertEquals("PackedWeighedProduct «Tangerines» in «Wooden box», description: «Manufacturer: China», " +
+                () -> assertEquals("Packed weighed product «Tangerines» in «Wooden box», description: «Manufacturer: China», " +
                         "net mass: 5.500 kg", packedWeighedProduct2.toString())
         );
     }
