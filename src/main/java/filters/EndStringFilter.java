@@ -4,11 +4,11 @@ package filters;
 import java.util.Objects;
 
 
-public class BeginStringFilter implements Filter {
+public class EndStringFilter implements Filter {
     private final String pattern;
     
     
-    public BeginStringFilter(String pattern) {
+    public EndStringFilter(String pattern) {
         this.pattern = pattern;
     }
     
@@ -18,15 +18,15 @@ public class BeginStringFilter implements Filter {
         if ((pattern == null) && (str == null))
             return true;
     
-        return (str != null) && (pattern != null) && (str.startsWith(pattern));
+        return (str != null) && (pattern != null) && (str.endsWith(pattern));
     }
     
     
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof BeginStringFilter)) return false;
-        BeginStringFilter that = (BeginStringFilter) o;
+        if (!(o instanceof EndStringFilter)) return false;
+        EndStringFilter that = (EndStringFilter) o;
         return Objects.equals(pattern, that.pattern);
     }
     
@@ -39,6 +39,6 @@ public class BeginStringFilter implements Filter {
     
     @Override
     public String toString() {
-        return String.format("BeginStringFilter {pattern: %s}", (pattern == null? null : "“" + pattern + "”"));
+        return String.format("EndStringFilter {pattern: %s}", (pattern == null? null : "“" + pattern + "”"));
     }
 }
