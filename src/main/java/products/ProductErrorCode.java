@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 
 public enum ProductErrorCode {
@@ -11,10 +11,10 @@ public enum ProductErrorCode {
     NULL_PRODUCT("A product must not be null");
     
     
-    private String errorString;
+    private final String errorString;
     
     
-    private ProductErrorCode(String errorString) {
+    ProductErrorCode(String errorString) {
         this.errorString = errorString;
     }
     

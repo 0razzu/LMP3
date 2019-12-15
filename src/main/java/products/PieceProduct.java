@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 
 public class PieceProduct extends Product {
@@ -16,7 +16,7 @@ public class PieceProduct extends Product {
     public void setMass(double mass) throws ProductException {
         if (mass < EPS)
             throw new ProductException(ProductErrorCode.NONPOSITIVE_MASS);
-    
+        
         this.mass = mass;
     }
     

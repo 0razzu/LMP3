@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 
 import org.junit.jupiter.api.Test;
@@ -31,35 +31,35 @@ public class TestProduct {
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_NAME, e.getErrorCode());
         }
-    
+        
         try {
             Product product2 = new Product("", "Something");
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_NAME, e.getErrorCode());
         }
-    
+        
         try {
             Product product3 = new Product("   ", "Something");
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_NAME, e.getErrorCode());
         }
-    
+        
         try {
             Product product4 = new Product("Something", "");
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_DESCRIPTION, e.getErrorCode());
         }
-    
+        
         try {
             Product product5 = new Product("Something", "");
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_DESCRIPTION, e.getErrorCode());
         }
-    
+        
         try {
             Product product6 = new Product("Something", "   ");
             fail();
@@ -108,7 +108,7 @@ public class TestProduct {
     
     
     @Test
-    public void testProductToString() throws ProductException {
+    public void testProductToString() {
         assertAll(
                 () -> assertEquals("Product {«Juice», description: «Not a juice indeed.»}",
                         new Product("Juice", "Not a juice indeed.").toString()),

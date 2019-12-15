@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 
 import org.junit.jupiter.api.Test;
@@ -138,9 +138,6 @@ public class TestProductBatch {
         
         ProductBatch productBatch1 = new ProductBatch("Batch #1", packedWeighedProduct);
         ProductBatch productBatch2 = new ProductBatch("Batch #2", packedPieceProduct, packedWeighedProduct, packedProducts);
-    
-        System.out.println(productBatch1);
-        System.out.println(productBatch2);
         
         assertAll(
                 () -> assertEquals("Product batch: [" +
@@ -157,12 +154,12 @@ public class TestProductBatch {
                         "Weighed product {«Candies», description: «Liquorice & salt»}, " +
                         "mass: 3.550 kg, Packaging {«Cardboard box», mass: 0.050 kg}}, " +
                         "Packed products: [" +
+                        "Packaging {«Big box», mass: 0.100 kg}, " +
                         "Packed piece product {Piece product {«Huge pack of cookies», description: «Pretty crunchy», " +
                         "mass: 12.500 kg}, quantity: 2, Packaging {«Box», mass: 0.250 kg}}, " +
                         "Packed weighed product {" +
                         "Weighed product {«Candies», description: «Liquorice & salt»}, " +
-                        "mass: 3.550 kg, Packaging {«Cardboard box», mass: 0.050 kg}}, " +
-                        "Packaging {«Big box», mass: 0.100 kg}]]", productBatch2.toString())
+                        "mass: 3.550 kg, Packaging {«Cardboard box», mass: 0.050 kg}}]]", productBatch2.toString())
         );
     }
 }

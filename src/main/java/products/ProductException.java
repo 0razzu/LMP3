@@ -1,8 +1,8 @@
-package Products;
+package products;
 
 
 public class ProductException extends Exception {
-    private ProductErrorCode errorCode;
+    private final ProductErrorCode errorCode;
     
     
     public ProductException(ProductErrorCode errorCode) {

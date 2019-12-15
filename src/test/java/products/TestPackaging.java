@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 
 import org.junit.jupiter.api.Test;
@@ -92,7 +92,7 @@ public class TestPackaging {
     
     
     @Test
-    public void testPackagingToString() throws ProductException {
+    public void testPackagingToString() {
         Locale.setDefault(Locale.ENGLISH);
         
         assertAll(

@@ -1,26 +1,26 @@
-package Products;
+package products;
 
 
 import java.util.Arrays;
 import java.util.Objects;
 
 
-public class ProductBatch {
-    private String description;
+public class PackedProducts implements Packed {
+    private Packaging packaging;
     private Packed[] packeds;
     
     
-    public ProductBatch(String description, Packed... packeds) throws ProductException {
-        setDescription(description);
+    public PackedProducts(Packaging packaging, Packed... packeds) throws ProductException {
+        setPackaging(packaging);
         setPackeds(packeds);
     }
     
     
-    private void setDescription(String description) throws ProductException {
-        if ((description == null) || (description.trim().equals("")))
-            throw new ProductException(ProductErrorCode.EMPTY_DESCRIPTION);
+    private void setPackaging(Packaging packaging) throws ProductException {
+        if (packaging == null)
+            throw new ProductException(ProductErrorCode.NULL_PACKAGING);
         
-        this.description = description.trim();
+        this.packaging = packaging;
     }
     
     
@@ -36,8 +36,9 @@ public class ProductBatch {
     }
     
     
-    public String getDescription() {
-        return description;
+    @Override
+    public Packaging getPackaging() {
+        return packaging;
     }
     
     
@@ -46,7 +47,8 @@ public class ProductBatch {
     }
     
     
-    public double getMass() {
+    @Override
+    public double getNetMass() {
         double mass = 0;
         
         for (Packed packed: packeds)
@@ -57,18 +59,24 @@ public class ProductBatch {
     
     
     @Override
+    public double getGrossMass() {
+        return getNetMass() + packaging.getMass();
+    }
+    
+    
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ProductBatch)) return false;
-        ProductBatch that = (ProductBatch) o;
-        return description.equals(that.description) &&
+        if (!(o instanceof PackedProducts)) return false;
+        PackedProducts that = (PackedProducts) o;
+        return packaging.equals(that.packaging) &&
                 Arrays.equals(packeds, that.packeds);
     }
     
     
     @Override
     public int hashCode() {
-        int result = Objects.hash(description);
+        int result = Objects.hash(packaging);
         result = 31 * result + Arrays.hashCode(packeds);
         return result;
     }
@@ -76,7 +84,7 @@ public class ProductBatch {
     
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Product batch: [description: ").append(description);
+        StringBuilder sb = new StringBuilder("Packed products: [").append(packaging);
         
         for (Packed packed: packeds)
             sb.append(", ").append(packed);

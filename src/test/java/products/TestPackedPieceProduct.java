@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 
 import org.junit.jupiter.api.Test;
@@ -49,21 +49,21 @@ public class TestPackedPieceProduct {
         String description = "A huge pack of pretty little things that gonna make you fat.";
         PieceProduct product = new PieceProduct("Huge pack of cookies", description, 20.5);
         Packaging packaging = new Packaging("Box", 0.25);
-    
+        
         try {
             PackedPieceProduct packedPieceProduct1 = new PackedPieceProduct(null, 5, packaging);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NULL_PRODUCT, e.getErrorCode());
         }
-    
+        
         try {
             PackedPieceProduct packedPieceProduct2 = new PackedPieceProduct(product, 0, packaging);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NONPOSITIVE_QUANTITY, e.getErrorCode());
         }
-    
+        
         try {
             PackedPieceProduct packedPieceProduct3 = new PackedPieceProduct(product, -6, packaging);
             fail();
@@ -88,10 +88,10 @@ public class TestPackedPieceProduct {
         PieceProduct product2 = new PieceProduct("Carton of juice", description2, 1);
         Packaging packaging1 = new Packaging("Box", 0.25);
         Packaging packaging2 = new Packaging("Plastic bag", 0.003);
-    
+        
         PackedPieceProduct packedPieceProduct1 = new PackedPieceProduct(product1, 8, packaging1);
         PackedPieceProduct packedPieceProduct2 = new PackedPieceProduct(product2, 3, packaging2);
-    
+        
         assertAll(
                 () -> assertEquals(164, packedPieceProduct1.getNetMass(), EPS),
                 () -> assertEquals(164.25, packedPieceProduct1.getGrossMass(), EPS),
@@ -109,7 +109,7 @@ public class TestPackedPieceProduct {
         PieceProduct product2 = new PieceProduct("Carton of juice", description2, 1);
         Packaging packaging1 = new Packaging("Box", 0.25);
         Packaging packaging2 = new Packaging("Plastic bag", 0.003);
-    
+        
         PackedPieceProduct packedPieceProduct1 = new PackedPieceProduct(product1, 5, packaging1);
         PackedPieceProduct packedPieceProduct2 = new PackedPieceProduct(product1, 5, packaging1);
         PackedPieceProduct packedPieceProduct3 = new PackedPieceProduct(product1, 5, packaging2);
@@ -135,7 +135,7 @@ public class TestPackedPieceProduct {
         PieceProduct product2 = new PieceProduct("Carton of juice", description2, 1);
         Packaging packaging1 = new Packaging("Box", 0.25);
         Packaging packaging2 = new Packaging("Plastic bag", 0.003);
-    
+        
         PackedPieceProduct packedPieceProduct1 = new PackedPieceProduct(product1, 7, packaging1);
         PackedPieceProduct packedPieceProduct2 = new PackedPieceProduct(product2, 3, packaging2);
         

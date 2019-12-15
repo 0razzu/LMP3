@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 
 import org.junit.jupiter.api.Test;
@@ -31,21 +31,21 @@ public class TestPackedWeighedProduct {
     public void testPackedWeighedProductExceptions() throws ProductException {
         WeighedProduct weighedProduct = new WeighedProduct("Candies", "Liquorice & salt");
         Packaging packaging = new Packaging("Cardboard box", 0.005);
-    
+        
         try {
             PackedWeighedProduct product1 = new PackedWeighedProduct(null, 1, packaging);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NULL_PRODUCT, e.getErrorCode());
         }
-    
+        
         try {
             PackedWeighedProduct product2 = new PackedWeighedProduct(weighedProduct, 0, packaging);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
         }
-    
+        
         try {
             PackedWeighedProduct product3 = new PackedWeighedProduct(weighedProduct, -2.5, packaging);
             fail();
@@ -100,7 +100,7 @@ public class TestPackedWeighedProduct {
         Packaging packaging2 = new Packaging("Wooden box", 0.2);
         WeighedProduct product1 = new WeighedProduct("Apples", "Manufacturer: Russia");
         WeighedProduct product2 = new WeighedProduct("Tangerines", "Manufacturer: China");
-    
+        
         PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product1, 10, packaging1);
         PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(product2, 5.5, packaging2);
         

@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 
 import org.junit.jupiter.api.Test;
@@ -110,7 +110,7 @@ public class TestWeighedProduct {
     
     
     @Test
-    public void testWeighedProductToString() throws ProductException {
+    public void testWeighedProductToString() {
         assertAll(
                 () -> assertEquals("Weighed product {«Juice», description: «Not a juice indeed.»}",
                         new WeighedProduct("Juice", "Not a juice indeed.").toString()),

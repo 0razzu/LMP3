@@ -1,4 +1,4 @@
-package Products;
+package products;
 
 
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ public class TestPieceProduct {
         String description2 = "A carton of hidden happiness.";
         PieceProduct product1 = new PieceProduct("Huge pack of cookies", description1, 20.5);
         PieceProduct product2 = new PieceProduct(" Carton of juice  ", description2, 1);
-    
+        
         assertAll(
                 () -> assertEquals("Huge pack of cookies", product1.getName()),
                 () -> assertEquals(description1, product1.getDescription()),
@@ -38,49 +38,49 @@ public class TestPieceProduct {
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_NAME, e.getErrorCode());
         }
-    
+        
         try {
             PieceProduct product2 = new PieceProduct("", "Something", 1);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_NAME, e.getErrorCode());
         }
-    
+        
         try {
             PieceProduct product3 = new PieceProduct("   ", "Something", 1);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_NAME, e.getErrorCode());
         }
-    
+        
         try {
             PieceProduct product4 = new PieceProduct("Something", "", 1);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_DESCRIPTION, e.getErrorCode());
         }
-    
+        
         try {
             PieceProduct product5 = new PieceProduct("Something", "", 1);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_DESCRIPTION, e.getErrorCode());
         }
-    
+        
         try {
             PieceProduct product6 = new PieceProduct("Something", "   ", 1);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.EMPTY_DESCRIPTION, e.getErrorCode());
         }
-    
+        
         try {
             PieceProduct product7 = new PieceProduct("Something", "Something", -1);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
         }
-    
+        
         try {
             PieceProduct product8 = new PieceProduct("Something", "Something", 0);
             fail();
@@ -88,6 +88,7 @@ public class TestPieceProduct {
             assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
         }
     }
+    
     
     @Test
     public void testPieceProductEquals() throws ProductException {
@@ -103,7 +104,7 @@ public class TestPieceProduct {
         PieceProduct product6 = new PieceProduct(name1, description1, 2.8);
         Product product7 = new Product(name1, description1);
         WeighedProduct product8 = new WeighedProduct(name1, description1);
-    
+        
         assertAll(
                 () -> assertEquals(product1, product1),
                 () -> assertEquals(product1, product2),
