@@ -26,7 +26,7 @@ public class ProductBatch {
     
     private void setPackeds(Packed[] packeds) throws ProductException {
         if ((packeds == null) || (packeds.length == 0))
-            throw new ProductException(ProductErrorCode.NULL_PRODUCT);
+            throw new ProductException(ProductErrorCode.NULL_PACKEDS);
         
         for (Packed packed: packeds)
             if (packed == null)
@@ -76,12 +76,12 @@ public class ProductBatch {
     
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Product batch: [");
+        StringBuilder sb = new StringBuilder("Product batch: [description: ").append(description);
         
         for (Packed packed: packeds)
-            sb.append(packed).append(", ");
+            sb.append(", ").append(packed);
         
-        sb.append("description: ").append(description).append("]");
+        sb.append("]");
         
         return sb.toString();
     }
