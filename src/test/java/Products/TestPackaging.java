@@ -1,10 +1,7 @@
 package Products;
 
 
-import Products.ProductErrorCode;
-import Products.ProductException;
 import org.junit.jupiter.api.Test;
-import Products.Packaging;
 
 import java.util.Locale;
 
@@ -99,8 +96,8 @@ public class TestPackaging {
         Locale.setDefault(Locale.ENGLISH);
         
         assertAll(
-                () -> assertEquals("Packaging «Bubble wrap», mass: 0.005 kg", new Packaging("Bubble wrap", 0.005).toString()),
-                () -> assertEquals("Packaging «Box», mass: 10.000 kg", new Packaging("Box", 10).toString())
+                () -> assertEquals("Packaging {«Bubble wrap», mass: 0.005 kg}", new Packaging("Bubble wrap", 0.005).toString()),
+                () -> assertEquals("Packaging {«Box», mass: 10.000 kg}", new Packaging("Box", 10).toString())
         );
     }
 }

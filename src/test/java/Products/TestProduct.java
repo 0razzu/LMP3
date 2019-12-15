@@ -1,10 +1,7 @@
 package Products;
 
 
-import Products.ProductErrorCode;
-import Products.ProductException;
 import org.junit.jupiter.api.Test;
-import Products.Product;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -113,9 +110,9 @@ public class TestProduct {
     @Test
     public void testProductToString() throws ProductException {
         assertAll(
-                () -> assertEquals("Product «Juice», description: «Not a juice indeed.»",
+                () -> assertEquals("Product {«Juice», description: «Not a juice indeed.»}",
                         new Product("Juice", "Not a juice indeed.").toString()),
-                () -> assertEquals("Product «Washer», description: «Gonna set a flood.»",
+                () -> assertEquals("Product {«Washer», description: «Gonna set a flood.»}",
                         new Product("Washer", "Gonna set a flood.").toString())
         );
     }

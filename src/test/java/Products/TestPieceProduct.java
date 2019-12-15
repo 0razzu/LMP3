@@ -1,12 +1,7 @@
 package Products;
 
 
-import Products.ProductErrorCode;
-import Products.ProductException;
 import org.junit.jupiter.api.Test;
-import Products.PieceProduct;
-import Products.Product;
-import Products.WeighedProduct;
 
 import java.util.Locale;
 
@@ -127,10 +122,11 @@ public class TestPieceProduct {
         Locale.setDefault(Locale.ENGLISH);
         
         assertAll(
-                () -> assertEquals("Piece product «Huge pack of cookies», description: «You’ll explode if you eat them all.», " +
-                                "piece mass: 20.500 kg",
+                () -> assertEquals("Piece product {«Huge pack of cookies», " +
+                                "description: «You’ll explode if you eat them all.», mass: 20.500 kg}",
                         new PieceProduct("Huge pack of cookies", "You’ll explode if you eat them all.", 20.5).toString()),
-                () -> assertEquals("Piece product «Carton of juice», description: «A carton of hidden happiness.», piece mass: 1.000 kg",
+                () -> assertEquals("Piece product {«Carton of juice», " +
+                                "description: «A carton of hidden happiness.», mass: 1.000 kg}",
                         new PieceProduct("Carton of juice", "A carton of hidden happiness.", 1).toString())
         );
     }

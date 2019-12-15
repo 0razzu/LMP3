@@ -89,12 +89,12 @@ public class PackedPieceProducts implements Packed {
     
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Packed piece products:\n");
+        StringBuilder sb = new StringBuilder("Packed piece products: [");
         
         for (PieceProduct product: products)
-            sb.append("    ").append(product).append(",\n");
+            sb.append(product).append(", ");
         
-        sb.append(packaging);
+        sb.append(packaging).append("]");
         
         return sb.toString();
     }

@@ -60,6 +60,6 @@ public class Packaging {
     
     @Override
     public String toString() {
-        return String.format("Packaging «%s», mass: %.3f kg", name, mass);
+        return String.format("Packaging {«%s», mass: %.3f kg}", name, mass);
     }
 }

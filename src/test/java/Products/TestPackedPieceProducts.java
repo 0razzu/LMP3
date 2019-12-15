@@ -1,12 +1,7 @@
 package Products;
 
 
-import Products.ProductErrorCode;
-import Products.ProductException;
 import org.junit.jupiter.api.Test;
-import Products.PackedPieceProducts;
-import Products.Packaging;
-import Products.PieceProduct;
 
 import java.util.Locale;
 
@@ -154,15 +149,15 @@ public class TestPackedPieceProducts {
         PackedPieceProducts packedPieceProducts2 = new PackedPieceProducts(packaging2, product2, product2, product2);
         
         assertAll(
-                () -> assertEquals("Packed piece products:\n" +
-                        "    Piece product «Huge pack of cookies», description: «Pretty crunchy.», piece mass: 20.500 kg,\n" +
-                        "    Piece product «Carton of juice», description: «A carton of hidden happiness.», piece mass: 1.000 kg,\n" +
-                        "Packaging «Box», mass: 0.250 kg", packedPieceProducts1.toString()),
-                () -> assertEquals("Packed piece products:\n" +
-                        "    Piece product «Carton of juice», description: «A carton of hidden happiness.», piece mass: 1.000 kg,\n" +
-                        "    Piece product «Carton of juice», description: «A carton of hidden happiness.», piece mass: 1.000 kg,\n" +
-                        "    Piece product «Carton of juice», description: «A carton of hidden happiness.», piece mass: 1.000 kg,\n" +
-                        "Packaging «Plastic bag», mass: 0.003 kg", packedPieceProducts2.toString())
+                () -> assertEquals("Packed piece products: [" +
+                        "Piece product {«Huge pack of cookies», description: «Pretty crunchy.», mass: 20.500 kg}, " +
+                        "Piece product {«Carton of juice», description: «A carton of hidden happiness.», mass: 1.000 kg}, " +
+                        "Packaging {«Box», mass: 0.250 kg}]", packedPieceProducts1.toString()),
+                () -> assertEquals("Packed piece products: [" +
+                        "Piece product {«Carton of juice», description: «A carton of hidden happiness.», mass: 1.000 kg}, " +
+                        "Piece product {«Carton of juice», description: «A carton of hidden happiness.», mass: 1.000 kg}, " +
+                        "Piece product {«Carton of juice», description: «A carton of hidden happiness.», mass: 1.000 kg}, " +
+                        "Packaging {«Plastic bag», mass: 0.003 kg}]", packedPieceProducts2.toString())
         );
     }
 }
