@@ -143,23 +143,23 @@ public class TestProductBatch {
                 () -> assertEquals("Product batch: [" +
                         "description: Batch #1, " +
                         "Packed weighed product {" +
-                        "Weighed product {«Candies», description: «Liquorice & salt»}, " +
-                        "mass: 3.550 kg, Packaging {«Cardboard box», mass: 0.050 kg}}]", productBatch1.toString()),
+                        "Weighed product {“Candies”, description: “Liquorice & salt”}, " +
+                        "mass: 3.550 kg, Packaging {“Cardboard box”, mass: 0.050 kg}}]", productBatch1.toString()),
                 () -> assertEquals("Product batch: [" +
                         "description: Batch #2, " +
                         "Packed piece product {" +
-                        "Piece product {«Huge pack of cookies», description: «Pretty crunchy», mass: 12.500 kg}, " +
-                        "quantity: 2, Packaging {«Box», mass: 0.250 kg}}, " +
+                        "Piece product {“Huge pack of cookies”, description: “Pretty crunchy”, mass: 12.500 kg}, " +
+                        "quantity: 2, Packaging {“Box”, mass: 0.250 kg}}, " +
                         "Packed weighed product {" +
-                        "Weighed product {«Candies», description: «Liquorice & salt»}, " +
-                        "mass: 3.550 kg, Packaging {«Cardboard box», mass: 0.050 kg}}, " +
+                        "Weighed product {“Candies”, description: “Liquorice & salt”}, " +
+                        "mass: 3.550 kg, Packaging {“Cardboard box”, mass: 0.050 kg}}, " +
                         "Packed products: [" +
-                        "Packaging {«Big box», mass: 0.100 kg}, " +
-                        "Packed piece product {Piece product {«Huge pack of cookies», description: «Pretty crunchy», " +
-                        "mass: 12.500 kg}, quantity: 2, Packaging {«Box», mass: 0.250 kg}}, " +
+                        "Packaging {“Big box”, mass: 0.100 kg}, " +
+                        "Packed piece product {Piece product {“Huge pack of cookies”, description: “Pretty crunchy”, " +
+                        "mass: 12.500 kg}, quantity: 2, Packaging {“Box”, mass: 0.250 kg}}, " +
                         "Packed weighed product {" +
-                        "Weighed product {«Candies», description: «Liquorice & salt»}, " +
-                        "mass: 3.550 kg, Packaging {«Cardboard box», mass: 0.050 kg}}]]", productBatch2.toString())
+                        "Weighed product {“Candies”, description: “Liquorice & salt”}, " +
+                        "mass: 3.550 kg, Packaging {“Cardboard box”, mass: 0.050 kg}}]]", productBatch2.toString())
         );
     }
 }

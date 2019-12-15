@@ -39,6 +39,6 @@ public class PieceProduct extends Product {
     
     @Override
     public String toString() {
-        return String.format("Piece product {«%s», description: «%s», mass: %.3f kg}", name, description, mass);
+        return String.format("Piece product {“%s”, description: “%s”, mass: %.3f kg}", name, description, mass);
     }
 }

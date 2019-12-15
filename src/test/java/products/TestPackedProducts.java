@@ -140,16 +140,16 @@ public class TestPackedProducts {
         
         assertAll(
                 () -> assertEquals("Packed products: [" +
-                        "Packaging {«Big packet», mass: 0.200 kg}, " +
-                        "Packed weighed product {Weighed product {«Candies», description: «Liquorice & salt»}, " +
-                        "mass: 3.550 kg, Packaging {«Cardboard box», mass: 0.050 kg}}]", packedProducts1.toString()),
+                        "Packaging {“Big packet”, mass: 0.200 kg}, " +
+                        "Packed weighed product {Weighed product {“Candies”, description: “Liquorice & salt”}, " +
+                        "mass: 3.550 kg, Packaging {“Cardboard box”, mass: 0.050 kg}}]", packedProducts1.toString()),
                 () -> assertEquals("Packed products: [" +
-                        "Packaging {«Big box», mass: 0.500 kg}, " +
-                        "Packed piece product {Piece product {«Huge pack of cookies», " +
-                        "description: «Pretty crunchy», mass: 12.500 kg}, quantity: 2, Packaging {«Box», mass: 0.250 kg}}, " +
-                        "Packed products: [Packaging {«Big packet», mass: 0.200 kg}, " +
-                        "Packed weighed product {Weighed product {«Candies», description: «Liquorice & salt»}, " +
-                        "mass: 3.550 kg, Packaging {«Cardboard box», mass: 0.050 kg}}]]", packedProducts2.toString())
+                        "Packaging {“Big box”, mass: 0.500 kg}, " +
+                        "Packed piece product {Piece product {“Huge pack of cookies”, " +
+                        "description: “Pretty crunchy”, mass: 12.500 kg}, quantity: 2, Packaging {“Box”, mass: 0.250 kg}}, " +
+                        "Packed products: [Packaging {“Big packet”, mass: 0.200 kg}, " +
+                        "Packed weighed product {Weighed product {“Candies”, description: “Liquorice & salt”}, " +
+                        "mass: 3.550 kg, Packaging {“Cardboard box”, mass: 0.050 kg}}]]", packedProducts2.toString())
         );
     }
 }

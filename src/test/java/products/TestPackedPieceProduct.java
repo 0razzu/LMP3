@@ -141,11 +141,11 @@ public class TestPackedPieceProduct {
         
         assertAll(
                 () -> assertEquals("Packed piece product {Piece product {" +
-                        "«Huge pack of cookies», description: «Pretty crunchy.», mass: 20.500 kg}, quantity: 7, " +
-                        "Packaging {«Box», mass: 0.250 kg}}", packedPieceProduct1.toString()),
+                        "“Huge pack of cookies”, description: “Pretty crunchy.”, mass: 20.500 kg}, quantity: 7, " +
+                        "Packaging {“Box”, mass: 0.250 kg}}", packedPieceProduct1.toString()),
                 () -> assertEquals("Packed piece product {Piece product {" +
-                        "«Carton of juice», description: «A carton of hidden happiness.», mass: 1.000 kg}, quantity: 3, " +
-                        "Packaging {«Plastic bag», mass: 0.003 kg}}", packedPieceProduct2.toString())
+                        "“Carton of juice”, description: “A carton of hidden happiness.”, mass: 1.000 kg}, quantity: 3, " +
+                        "Packaging {“Plastic bag”, mass: 0.003 kg}}", packedPieceProduct2.toString())
         );
     }
 }
