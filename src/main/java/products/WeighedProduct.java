@@ -7,6 +7,11 @@ public class WeighedProduct extends Product {
     }
     
     
+    public WeighedProduct(WeighedProduct product) throws ProductException {
+        super(product);
+    }
+    
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

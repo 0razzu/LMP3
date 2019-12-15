@@ -4,25 +4,16 @@ package products;
 import java.util.Objects;
 
 
-public class PackedWeighedProduct implements Packed {
+public class PackedWeighedProduct extends WeighedProduct implements Packed {
     private static final double EPS = 10E-6;
     private Packaging packaging;
-    private WeighedProduct product;
     private double mass;
     
     
     public PackedWeighedProduct(WeighedProduct product, double mass, Packaging packaging) throws ProductException {
-        setProduct(product);
+        super(product);
         setMass(mass);
         setPackaging(packaging);
-    }
-    
-    
-    private void setProduct(WeighedProduct product) throws ProductException {
-        if (product == null)
-            throw new ProductException(ProductErrorCode.NULL_PRODUCT);
-        
-        this.product = product;
     }
     
     
@@ -39,11 +30,6 @@ public class PackedWeighedProduct implements Packed {
             throw new ProductException(ProductErrorCode.NULL_PACKAGING);
         
         this.packaging = packaging;
-    }
-    
-    
-    public WeighedProduct getProduct() {
-        return product;
     }
     
     
@@ -69,22 +55,22 @@ public class PackedWeighedProduct implements Packed {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PackedWeighedProduct)) return false;
+        if (!super.equals(o)) return false;
         PackedWeighedProduct that = (PackedWeighedProduct) o;
-        return Double.compare(that.mass, mass) == 0 &&
-                packaging.equals(that.packaging) &&
-                product.equals(that.product);
+        return Math.abs(that.mass - mass) < EPS &&
+                packaging.equals(that.packaging);
     }
     
     
     @Override
     public int hashCode() {
-        return Objects.hash(packaging, product, mass);
+        return Objects.hash(super.hashCode(), packaging, mass);
     }
     
     
     @Override
     public String toString() {
         return String.format("Packed weighed product {%s, mass: %.3f kg, %s}",
-                product, mass, packaging);
+                super.toString(), mass, packaging);
     }
 }

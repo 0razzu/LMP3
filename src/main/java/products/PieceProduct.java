@@ -3,13 +3,20 @@ package products;
 
 public class PieceProduct extends Product {
     private static final double EPS = 10E-6;
-    private double mass;
+    protected double mass;
     
     
     public PieceProduct(String name, String description, double mass) throws ProductException {
         super(name, description);
         
         setMass(mass);
+    }
+    
+    
+    public PieceProduct(PieceProduct product) throws ProductException {
+        super(product);
+        
+        setMass(product.mass);
     }
     
     

@@ -22,7 +22,7 @@ public class TestPackedPieceProduct {
         
         assertAll(
                 () -> assertEquals(packaging, packedPieceProduct.getPackaging()),
-                () -> assertEquals(product, packedPieceProduct.getProduct()),
+                () -> assertEquals(product, (PieceProduct) packedPieceProduct),
                 () -> assertEquals(2, packedPieceProduct.getQuantity())
         );
     }
@@ -38,7 +38,7 @@ public class TestPackedPieceProduct {
         
         assertAll(
                 () -> assertEquals(packaging, packedPieceProduct.getPackaging()),
-                () -> assertEquals(product, packedPieceProduct.getProduct()),
+                () -> assertEquals(product, (PieceProduct) packedPieceProduct),
                 () -> assertEquals(1, packedPieceProduct.getQuantity())
         );
     }

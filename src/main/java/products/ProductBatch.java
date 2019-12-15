@@ -76,7 +76,7 @@ public class ProductBatch {
     
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Product batch: [description: ").append(description);
+        StringBuilder sb = new StringBuilder("Product batch: [description: “").append(description).append("”");
         
         for (Packed packed: packeds)
             sb.append(", ").append(packed);

@@ -20,7 +20,7 @@ public class TestPackedWeighedProduct {
         
         assertAll(
                 () -> assertEquals(packaging, packedWeighedProduct.getPackaging()),
-                () -> assertEquals(product, packedWeighedProduct.getProduct()),
+                () -> assertEquals(product, (WeighedProduct) packedWeighedProduct),
                 () -> assertEquals(3.55, packedWeighedProduct.getNetMass(), EPS),
                 () -> assertEquals(3.555, packedWeighedProduct.getGrossMass(), EPS)
         );

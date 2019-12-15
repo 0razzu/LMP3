@@ -15,6 +15,15 @@ public class Product {
     }
     
     
+    public Product(Product product) throws ProductException {
+        if (product == null)
+            throw new ProductException(ProductErrorCode.NULL_PRODUCT);
+        
+        name = new String(product.name);
+        description = new String(product.description);
+    }
+    
+    
     protected void setName(String name) throws ProductException {
         if ((name == null) || (name.trim().equals("")))
             throw new ProductException(ProductErrorCode.EMPTY_NAME);

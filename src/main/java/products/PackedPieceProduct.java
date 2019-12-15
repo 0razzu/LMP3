@@ -4,24 +4,15 @@ package products;
 import java.util.Objects;
 
 
-public class PackedPieceProduct implements Packed {
-    private PieceProduct product;
+public class PackedPieceProduct extends PieceProduct implements Packed {
     private int quantity;
     private Packaging packaging;
     
     
     public PackedPieceProduct(PieceProduct product, int quantity, Packaging packaging) throws ProductException {
-        setProduct(product);
+        super(product);
         setQuantity(quantity);
         setPackaging(packaging);
-    }
-    
-    
-    private void setProduct(PieceProduct product) throws ProductException {
-        if (product == null)
-            throw new ProductException(ProductErrorCode.NULL_PRODUCT);
-        
-        this.product = product;
     }
     
     
@@ -41,11 +32,6 @@ public class PackedPieceProduct implements Packed {
     }
     
     
-    public PieceProduct getProduct() {
-        return product;
-    }
-    
-    
     public int getQuantity() {
         return quantity;
     }
@@ -59,7 +45,7 @@ public class PackedPieceProduct implements Packed {
     
     @Override
     public double getNetMass() {
-        return quantity * product.getMass();
+        return quantity * getMass();
     }
     
     
@@ -73,22 +59,22 @@ public class PackedPieceProduct implements Packed {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PackedPieceProduct)) return false;
+        if (!super.equals(o)) return false;
         PackedPieceProduct that = (PackedPieceProduct) o;
         return quantity == that.quantity &&
-                product.equals(that.product) &&
                 packaging.equals(that.packaging);
     }
     
     
     @Override
     public int hashCode() {
-        return Objects.hash(product, quantity, packaging);
+        return Objects.hash(super.hashCode(), quantity, packaging);
     }
     
     
     @Override
     public String toString() {
         return String.format("Packed piece product {%s, quantity: %d, %s}",
-                product, quantity, packaging);
+                super.toString(), quantity, packaging);
     }
 }

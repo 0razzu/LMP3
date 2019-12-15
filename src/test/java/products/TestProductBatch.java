@@ -33,7 +33,7 @@ public class TestProductBatch {
                 () -> assertArrayEquals(new Packed[]{packedPieceProduct, packedWeighedProduct, packedProducts},
                         productBatch.getPackeds()),
                 () -> assertEquals(pieceProduct,
-                        ((PackedPieceProduct) ((PackedProducts) (productBatch.getPackeds()[2])).getPackeds()[0]).getProduct()),
+                        ((PieceProduct) (((PackedProducts) (productBatch.getPackeds()[2])).getPackeds()[0]))),
                 () -> assertEquals(57.8, productBatch.getMass(), EPS)
         );
     }
@@ -141,12 +141,12 @@ public class TestProductBatch {
         
         assertAll(
                 () -> assertEquals("Product batch: [" +
-                        "description: Batch #1, " +
+                        "description: “Batch #1”, " +
                         "Packed weighed product {" +
                         "Weighed product {“Candies”, description: “Liquorice & salt”}, " +
                         "mass: 3.550 kg, Packaging {“Cardboard box”, mass: 0.050 kg}}]", productBatch1.toString()),
                 () -> assertEquals("Product batch: [" +
-                        "description: Batch #2, " +
+                        "description: “Batch #2”, " +
                         "Packed piece product {" +
                         "Piece product {“Huge pack of cookies”, description: “Pretty crunchy”, mass: 12.500 kg}, " +
                         "quantity: 2, Packaging {“Box”, mass: 0.250 kg}}, " +
