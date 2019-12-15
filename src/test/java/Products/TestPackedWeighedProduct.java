@@ -16,7 +16,7 @@ public class TestPackedWeighedProduct {
     public void testPackedWeighedProduct() throws ProductException {
         Packaging packaging = new Packaging("Cardboard box", 0.005);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(packaging, product, 3.55);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packaging);
         
         assertAll(
                 () -> assertEquals(packaging, packedWeighedProduct.getPackaging()),
@@ -28,35 +28,36 @@ public class TestPackedWeighedProduct {
     
     
     @Test
-    public void testPackedWeighedProductExceptions() {
+    public void testPackedWeighedProductExceptions() throws ProductException {
+        WeighedProduct weighedProduct = new WeighedProduct("Candies", "Liquorice & salt");
+        Packaging packaging = new Packaging("Cardboard box", 0.005);
+    
         try {
-            PackedWeighedProduct product1 = new PackedWeighedProduct(null, new WeighedProduct("Candies", "Liquorice & salt"), 1);
-            fail();
-        } catch (ProductException e) {
-            assertEquals(ProductErrorCode.NULL_PACKAGING, e.getErrorCode());
-        }
-        
-        try {
-            PackedWeighedProduct product2 = new PackedWeighedProduct(new Packaging("Cardboard box", 0.005), null, 1);
+            PackedWeighedProduct product1 = new PackedWeighedProduct(null, 1, packaging);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NULL_PRODUCT, e.getErrorCode());
         }
-        
+    
         try {
-            PackedWeighedProduct product3 = new PackedWeighedProduct(new Packaging("Box", 0.005),
-                    new WeighedProduct("Candies", "Liquorice & salt"), 0);
+            PackedWeighedProduct product2 = new PackedWeighedProduct(weighedProduct, 0, packaging);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
         }
     
         try {
-            PackedWeighedProduct product4 = new PackedWeighedProduct(new Packaging("Box", 0.005),
-                    new WeighedProduct("Candies", "Liquorice & salt"), -2.5);
+            PackedWeighedProduct product3 = new PackedWeighedProduct(weighedProduct, -2.5, packaging);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
+        }
+        
+        try {
+            PackedWeighedProduct product4 = new PackedWeighedProduct(weighedProduct, 1, null);
+            fail();
+        } catch (ProductException e) {
+            assertEquals(ProductErrorCode.NULL_PACKAGING, e.getErrorCode());
         }
     }
     
@@ -70,13 +71,13 @@ public class TestPackedWeighedProduct {
         WeighedProduct product3 = new WeighedProduct("Tangerines", "Manufacturer: Morocco");
         WeighedProduct product4 = new WeighedProduct("Tangerines", "Manufacturer: China");
         
-        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(packaging1, product1, 10);
-        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(packaging1, product1, 10);
-        PackedWeighedProduct packedWeighedProduct3 = new PackedWeighedProduct(packaging2, product1, 10);
-        PackedWeighedProduct packedWeighedProduct4 = new PackedWeighedProduct(packaging1, product2, 10);
-        PackedWeighedProduct packedWeighedProduct5 = new PackedWeighedProduct(packaging1, product3, 10);
-        PackedWeighedProduct packedWeighedProduct6 = new PackedWeighedProduct(packaging1, product4, 10);
-        PackedWeighedProduct packedWeighedProduct7 = new PackedWeighedProduct(packaging1, product1, 15);
+        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product1, 10, packaging1);
+        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(product1, 10, packaging1);
+        PackedWeighedProduct packedWeighedProduct3 = new PackedWeighedProduct(product1, 10, packaging2);
+        PackedWeighedProduct packedWeighedProduct4 = new PackedWeighedProduct(product2, 10, packaging1);
+        PackedWeighedProduct packedWeighedProduct5 = new PackedWeighedProduct(product3, 10, packaging1);
+        PackedWeighedProduct packedWeighedProduct6 = new PackedWeighedProduct(product4, 10, packaging1);
+        PackedWeighedProduct packedWeighedProduct7 = new PackedWeighedProduct(product1, 15, packaging1);
         
         assertAll(
                 () -> assertEquals(packedWeighedProduct1, packedWeighedProduct2),
@@ -100,14 +101,16 @@ public class TestPackedWeighedProduct {
         WeighedProduct product1 = new WeighedProduct("Apples", "Manufacturer: Russia");
         WeighedProduct product2 = new WeighedProduct("Tangerines", "Manufacturer: China");
     
-        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(packaging1, product1, 10);
-        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(packaging2, product2, 5.5);
+        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product1, 10, packaging1);
+        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(product2, 5.5, packaging2);
         
         assertAll(
-                () -> assertEquals("Packed weighed product «Apples» in «Cardboard box», description: «Manufacturer: Russia», " +
-                        "net mass: 10.000 kg", packedWeighedProduct1.toString()),
-                () -> assertEquals("Packed weighed product «Tangerines» in «Wooden box», description: «Manufacturer: China», " +
-                        "net mass: 5.500 kg", packedWeighedProduct2.toString())
+                () -> assertEquals("Packed weighed product {" +
+                        "Weighed product {«Apples», description: «Manufacturer: Russia»}, mass: 10.000 kg, " +
+                        "Packaging {«Cardboard box», mass: 0.010 kg}}", packedWeighedProduct1.toString()),
+                () -> assertEquals("Packed weighed product {" +
+                        "Weighed product {«Tangerines», description: «Manufacturer: China»}, mass: 5.500 kg, " +
+                        "Packaging {«Wooden box», mass: 0.200 kg}}", packedWeighedProduct2.toString())
         );
     }
 }
