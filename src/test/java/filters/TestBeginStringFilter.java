@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestBeginStringFilter {
     @Test
-    public void testBeginStringFilter1() {
+    void testBeginStringFilter1() {
         Filter filter1 = new BeginStringFilter("Мама");
         Filter filter2 = new BeginStringFilter("мыла");
         
@@ -22,7 +22,7 @@ public class TestBeginStringFilter {
     
     
     @Test
-    public void testBeginStringFilter2() {
+    void testBeginStringFilter2() {
         Filter filter1 = new BeginStringFilter("");
         Filter filter2 = new BeginStringFilter(null);
         
@@ -41,7 +41,7 @@ public class TestBeginStringFilter {
     
     
     @Test
-    public void testBeginStringFilterEquals() {
+    void testBeginStringFilterEquals() {
         Filter filter1 = new BeginStringFilter("abc");
         Filter filter2 = new BeginStringFilter("abc");
         Filter filter3 = new BeginStringFilter("ab");
@@ -58,7 +58,7 @@ public class TestBeginStringFilter {
     
     
     @Test
-    public void testBeginStringFilterToString() {
+    void testBeginStringFilterToString() {
         Filter filter1 = new BeginStringFilter("Мама");
         Filter filter2 = new BeginStringFilter(null);
         

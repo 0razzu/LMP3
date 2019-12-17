@@ -13,7 +13,7 @@ public class TestPackedPieceProduct {
     
     
     @Test
-    public void testPackedPieceProduct1() throws ProductException {
+    void testPackedPieceProduct1() throws ProductException {
         String description = "A huge pack of pretty little things that gonna make you fat.";
         PieceProduct product = new PieceProduct("Huge pack of cookies", description, 20.5);
         Packaging packaging = new Packaging("Box", 0.25);
@@ -29,7 +29,7 @@ public class TestPackedPieceProduct {
     
     
     @Test
-    public void testPackedPieceProduct2() throws ProductException {
+    void testPackedPieceProduct2() throws ProductException {
         String description = "A carton of hidden happiness.";
         PieceProduct product = new PieceProduct("Carton of juice", description, 1);
         Packaging packaging = new Packaging("Box", 0.25);
@@ -45,7 +45,7 @@ public class TestPackedPieceProduct {
     
     
     @Test
-    public void testPackedPieceProductExceptions() throws ProductException {
+    void testPackedPieceProductExceptions() throws ProductException {
         String description = "A huge pack of pretty little things that gonna make you fat.";
         PieceProduct product = new PieceProduct("Huge pack of cookies", description, 20.5);
         Packaging packaging = new Packaging("Box", 0.25);
@@ -81,7 +81,7 @@ public class TestPackedPieceProduct {
     
     
     @Test
-    public void testPackedPieceProductsGetMasses() throws ProductException {
+    void testPackedPieceProductsGetMasses() throws ProductException {
         String description1 = "A huge pack of pretty little things that gonna make you fat.";
         String description2 = "A carton of hidden happiness.";
         PieceProduct product1 = new PieceProduct("Huge pack of cookies", description1, 20.5);
@@ -102,7 +102,7 @@ public class TestPackedPieceProduct {
     
     
     @Test
-    public void testPackedPieceProductsEquals() throws ProductException {
+    void testPackedPieceProductsEquals() throws ProductException {
         String description1 = "A huge pack of pretty little things that gonna make you fat.";
         String description2 = "A carton of hidden happiness.";
         PieceProduct product1 = new PieceProduct("Huge pack of cookies", description1, 20.5);
@@ -126,7 +126,7 @@ public class TestPackedPieceProduct {
     
     
     @Test
-    public void testPackedPieceProductsToString() throws ProductException {
+    void testPackedPieceProductsToString() throws ProductException {
         Locale.setDefault(Locale.ENGLISH);
         
         String description1 = "Pretty crunchy.";

@@ -13,7 +13,7 @@ public class TestProductBatch {
     
     
     @Test
-    public void testProductBatch() throws ProductException {
+    void testProductBatch() throws ProductException {
         String description = "Pretty crunchy";
         PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
         Packaging packagingPiece = new Packaging("Box", 0.25);
@@ -40,7 +40,7 @@ public class TestProductBatch {
     
     
     @Test
-    public void testProductBatchExceptions() throws ProductException {
+    void testProductBatchExceptions() throws ProductException {
         String description = "Pretty crunchy";
         PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
         Packaging packagingPiece = new Packaging("Box", 0.2);
@@ -90,7 +90,7 @@ public class TestProductBatch {
     
     
     @Test
-    public void testProductBatchEquals() throws ProductException {
+    void testProductBatchEquals() throws ProductException {
         String description = "Pretty crunchy";
         PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
         Packaging packagingPiece = new Packaging("Box", 0.25);
@@ -121,7 +121,7 @@ public class TestProductBatch {
     
     
     @Test
-    public void testProductBatchToString() throws ProductException {
+    void testProductBatchToString() throws ProductException {
         Locale.setDefault(Locale.ENGLISH);
         
         String description = "Pretty crunchy";

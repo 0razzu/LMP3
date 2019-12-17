@@ -13,7 +13,7 @@ public class TestPackaging {
     
     
     @Test
-    public void testPackaging() throws ProductException {
+    void testPackaging() throws ProductException {
         Packaging packaging1 = new Packaging("Bubble wrap", 0.005);
         Packaging packaging2 = new Packaging("   Box ", 10);
         
@@ -27,7 +27,7 @@ public class TestPackaging {
     
     
     @Test
-    public void testPackagingExceptions() {
+    void testPackagingExceptions() {
         try {
             Packaging packaging1 = new Packaging(null, 1);
             fail();
@@ -59,7 +59,7 @@ public class TestPackaging {
     
     
     @Test
-    public void testPackagingSetters() throws ProductException {
+    void testPackagingSetters() throws ProductException {
         Packaging packaging1 = new Packaging("Bubble wrap", 0.005);
         
         packaging1.setName("Box");
@@ -73,7 +73,7 @@ public class TestPackaging {
     
     
     @Test
-    public void testPackagingEquals() throws ProductException {
+    void testPackagingEquals() throws ProductException {
         Packaging packaging1 = new Packaging("Bubble wrap", 0.005);
         Packaging packaging2 = new Packaging("Box", 10);
         Packaging Packaging3 = new Packaging("Bubble wrap", 0.005);
@@ -92,7 +92,7 @@ public class TestPackaging {
     
     
     @Test
-    public void testPackagingToString() {
+    void testPackagingToString() {
         Locale.setDefault(Locale.ENGLISH);
         
         assertAll(

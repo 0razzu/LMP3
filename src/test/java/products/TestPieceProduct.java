@@ -13,7 +13,7 @@ public class TestPieceProduct {
     
     
     @Test
-    public void testPieceProduct() throws ProductException {
+    void testPieceProduct() throws ProductException {
         String description1 = "A huge pack of pretty little things that gonna make you fat.";
         String description2 = "A carton of hidden happiness.";
         PieceProduct product1 = new PieceProduct("Huge pack of cookies", description1, 20.5);
@@ -31,7 +31,7 @@ public class TestPieceProduct {
     
     
     @Test
-    public void testPieceProductExceptions() {
+    void testPieceProductExceptions() {
         try {
             PieceProduct product1 = new PieceProduct(null, "Something", 1);
             fail();
@@ -91,7 +91,7 @@ public class TestPieceProduct {
     
     
     @Test
-    public void testPieceProductEquals() throws ProductException {
+    void testPieceProductEquals() throws ProductException {
         String name1 = "name1";
         String name2 = "name2";
         String description1 = "description1";
@@ -119,7 +119,7 @@ public class TestPieceProduct {
     
     
     @Test
-    public void testPieceProductToString() {
+    void testPieceProductToString() {
         Locale.setDefault(Locale.ENGLISH);
         
         assertAll(

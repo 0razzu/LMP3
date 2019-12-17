@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestProductsService {
     @Test
-    public void testProductServiceCountByFilter() throws ProductException, ProductsServiceException {
+    void testProductServiceCountByFilter() throws ProductException, ProductsServiceException {
         String description = "Pretty crunchy";
         PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
         Packaging packagingPiece = new Packaging("Box", 0.25);
@@ -38,7 +38,7 @@ public class TestProductsService {
     
     
     @Test
-    public void testProductServiceCountByFilterDeep() throws ProductException, ProductsServiceException {
+    void testProductServiceCountByFilterDeep() throws ProductException, ProductsServiceException {
         String description = "Pretty crunchy";
         PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
         Packaging packagingPiece = new Packaging("Box", 0.25);
@@ -67,7 +67,7 @@ public class TestProductsService {
     
     
     @Test
-    public void testProductServiceCheckAllWeighed() throws ProductException, ProductsServiceException {
+    void testProductServiceCheckAllWeighed() throws ProductException, ProductsServiceException {
         String description = "Pretty crunchy";
         PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
         Packaging packagingPiece = new Packaging("Box", 0.25);
@@ -94,7 +94,7 @@ public class TestProductsService {
     
     
     @Test
-    public void testProductServiceExceptions() throws ProductException {
+    void testProductServiceExceptions() throws ProductException {
         Packaging packaging = new Packaging("Cardboard box", 0.05);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
         PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packaging);

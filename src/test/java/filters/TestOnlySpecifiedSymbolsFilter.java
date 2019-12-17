@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestOnlySpecifiedSymbolsFilter {
     @Test
-    public void testOnlySpecifiedSymbolsFilter1() {
+    void testOnlySpecifiedSymbolsFilter1() {
         Filter filter1 = new OnlySpecifiedSymbolsFilter("Мама");
         Filter filter2 = new OnlySpecifiedSymbolsFilter("Мам ылру");
     
@@ -25,7 +25,7 @@ public class TestOnlySpecifiedSymbolsFilter {
     
     
     @Test
-    public void testOnlySpecifiedSymbolsFilter2() {
+    void testOnlySpecifiedSymbolsFilter2() {
         Filter filter1 = new OnlySpecifiedSymbolsFilter((String) null);
     
         Set<Character> characters = new HashSet<>();
@@ -50,7 +50,7 @@ public class TestOnlySpecifiedSymbolsFilter {
     
     
     @Test
-    public void testOnlySpecifiedSymbolsEquals() {
+    void testOnlySpecifiedSymbolsEquals() {
         Filter filter1 = new OnlySpecifiedSymbolsFilter((String) null);
         Filter filter2 = new OnlySpecifiedSymbolsFilter((Set<Character>) null);
         Filter filter3 = new OnlySpecifiedSymbolsFilter("");
@@ -68,7 +68,7 @@ public class TestOnlySpecifiedSymbolsFilter {
     
     
     @Test
-    public void testOnlySpecifiedSymbolsToString() {
+    void testOnlySpecifiedSymbolsToString() {
         Filter filter1 = new OnlySpecifiedSymbolsFilter("М");
         Filter filter2 = new OnlySpecifiedSymbolsFilter((String) null);
         

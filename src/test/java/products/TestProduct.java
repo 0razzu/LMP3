@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestProduct {
     @Test
-    public void testProduct() throws ProductException {
+    void testProduct() throws ProductException {
         String description1 = "The best laptop in the world.";
         String description2 = "This robot can get rid of you someday. No doubt you need it.";
         Product product1 = new Product("Laptop 3", description1);
@@ -24,7 +24,7 @@ public class TestProduct {
     
     
     @Test
-    public void testProductExceptions() {
+    void testProductExceptions() {
         try {
             Product product1 = new Product(null, "Something");
             fail();
@@ -70,7 +70,7 @@ public class TestProduct {
     
     
     @Test
-    public void testProductSetters() throws ProductException {
+    void testProductSetters() throws ProductException {
         String description1 = "The best laptop in the world.";
         String description2 = "This robot can get rid of you someday. No doubt you need it.";
         Product product1 = new Product("Laptop 3", description1);
@@ -86,7 +86,7 @@ public class TestProduct {
     
     
     @Test
-    public void testProductEquals() throws ProductException {
+    void testProductEquals() throws ProductException {
         String name1 = "name1";
         String name2 = "name2";
         String description1 = "description1";
@@ -108,7 +108,7 @@ public class TestProduct {
     
     
     @Test
-    public void testProductToString() {
+    void testProductToString() {
         assertAll(
                 () -> assertEquals("Product {“Juice”, description: “Not a juice indeed.”}",
                         new Product("Juice", "Not a juice indeed.").toString()),

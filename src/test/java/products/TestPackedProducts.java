@@ -13,7 +13,7 @@ public class TestPackedProducts {
     
     
     @Test
-    public void testPackedProducts() throws ProductException {
+    void testPackedProducts() throws ProductException {
         String description = "Pretty crunchy";
         PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
         Packaging packagingPiece = new Packaging("Box", 0.25);
@@ -55,7 +55,7 @@ public class TestPackedProducts {
     
     
     @Test
-    public void testPackedProductsExceptions() throws ProductException {
+    void testPackedProductsExceptions() throws ProductException {
         Packaging packaging1 = new Packaging("Cardboard box", 0.05);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
         PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packaging1);
@@ -93,7 +93,7 @@ public class TestPackedProducts {
     
     
     @Test
-    public void testPackedProductsEquals() throws ProductException {
+    void testPackedProductsEquals() throws ProductException {
         Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
         PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product, 3.55, packagingWeighed);
@@ -120,7 +120,7 @@ public class TestPackedProducts {
     
     
     @Test
-    public void testPackedProductsToString() throws ProductException {
+    void testPackedProductsToString() throws ProductException {
         Locale.setDefault(Locale.ENGLISH);
         
         String description = "Pretty crunchy";
