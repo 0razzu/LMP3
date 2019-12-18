@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class PackedProducts implements Packed {
     private Packaging packaging;
-    private Packed[] packeds;
+    private Packed[] packeds; // 123
     
     
     public PackedProducts(Packaging packaging, Packed... packeds) throws ProductException {
