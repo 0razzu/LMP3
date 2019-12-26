@@ -52,7 +52,7 @@ public class ProductsService {
             if (packed instanceof PackedProducts)
                 checkAllWeighted(new ProductBatch("description", ((PackedProducts) packed).getPackeds()));
                 
-            else if (!(packed instanceof WeighedProduct) && !(packed instanceof PackedWeighedProduct)) {
+            else if (!(packed instanceof PackedWeighedProduct)) {
                 return false;
             }
         }
