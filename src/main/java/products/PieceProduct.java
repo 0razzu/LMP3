@@ -2,7 +2,7 @@ package products;
 
 
 public class PieceProduct extends Product {
-    private static final double EPS = 10E-6;
+    private static final double EPS = 1E-6;
     protected double mass;
     
     

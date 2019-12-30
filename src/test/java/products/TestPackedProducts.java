@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestPackedProducts {
-    private static final double EPS = 10E-6;
+    private static final double EPS = 1E-6;
     
     
     @Test

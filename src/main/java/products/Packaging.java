@@ -5,7 +5,7 @@ import java.util.Objects;
 
 
 public class Packaging {
-    private static final double EPS = 10E-6;
+    private static final double EPS = 1E-6;
     private String name;
     private double mass;
     
