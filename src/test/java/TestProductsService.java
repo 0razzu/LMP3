@@ -14,17 +14,17 @@ public class TestProductsService {
         PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
         Packaging packagingPiece = new Packaging("Box", 0.25);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
-        
+    
         Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
         PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packagingWeighed);
-        
+    
         Packaging packagingPacked = new Packaging("Big box", 0.1);
         PackedProducts packedProducts = new PackedProducts(packagingPacked, packedPieceProduct, packedWeighedProduct);
-        
+    
         ProductBatch productBatch1 = new ProductBatch("Batch #1", packedWeighedProduct);
         ProductBatch productBatch2 = new ProductBatch("Batch #2", packedPieceProduct, packedWeighedProduct, packedProducts);
-        
+    
         Filter filter1 = new BeginStringFilter("Huge");
         Filter filter2 = new EndStringFilter("");
         
