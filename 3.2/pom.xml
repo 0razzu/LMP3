@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>0razzu</groupId>
-    <artifactId>3</artifactId>
+    <artifactId>Filters</artifactId>
     <version>2.0</version>
     <packaging>jar</packaging>
 
@@ -41,5 +41,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 
 </project>
