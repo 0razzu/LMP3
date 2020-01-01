@@ -19,10 +19,10 @@ public class TestPackedWeighedProduct {
         PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packaging);
         
         assertAll(
-                () -> assertEquals(packaging, packedWeighedProduct.getPackaging()),
-                () -> assertEquals(product, (WeighedProduct) packedWeighedProduct),
+                () -> assertEquals(product, packedWeighedProduct),
                 () -> assertEquals(3.55, packedWeighedProduct.getNetMass(), EPS),
-                () -> assertEquals(3.555, packedWeighedProduct.getGrossMass(), EPS)
+                () -> assertEquals(3.555, packedWeighedProduct.getGrossMass(), EPS),
+                () -> assertEquals(packaging, packedWeighedProduct.getPackaging())
         );
     }
     

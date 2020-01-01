@@ -21,9 +21,9 @@ public class TestPackedPieceProduct {
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(product, 2, packaging);
         
         assertAll(
-                () -> assertEquals(packaging, packedPieceProduct.getPackaging()),
-                () -> assertEquals(product, (PieceProduct) packedPieceProduct),
-                () -> assertEquals(2, packedPieceProduct.getQuantity())
+                () -> assertEquals(product, packedPieceProduct),
+                () -> assertEquals(2, packedPieceProduct.getQuantity()),
+                () -> assertEquals(packaging, packedPieceProduct.getPackaging())
         );
     }
     
@@ -37,9 +37,9 @@ public class TestPackedPieceProduct {
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(product, 1, packaging);
         
         assertAll(
-                () -> assertEquals(packaging, packedPieceProduct.getPackaging()),
-                () -> assertEquals(product, (PieceProduct) packedPieceProduct),
-                () -> assertEquals(1, packedPieceProduct.getQuantity())
+                () -> assertEquals(product, packedPieceProduct),
+                () -> assertEquals(1, packedPieceProduct.getQuantity()),
+                () -> assertEquals(packaging, packedPieceProduct.getPackaging())
         );
     }
     
