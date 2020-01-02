@@ -9,17 +9,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestProductsService {
     @Test
-    void testProductServiceCountByFilter() throws ProductException, ProductsServiceException {
+    void testProductServiceCountByFilter() throws ProductException {
         String description = "Pretty crunchy";
-        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
-        Packaging packagingPiece = new Packaging("Box", 0.25);
+        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12500);
+        Packaging packagingPiece = new Packaging("Box", 250);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
         
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packagingWeighed);
         
-        Packaging packagingPacked = new Packaging("Big box", 0.1);
+        Packaging packagingPacked = new Packaging("Big box", 100);
         PackedProducts packedProducts = new PackedProducts(packagingPacked, packedPieceProduct, packedWeighedProduct);
         
         ProductBatch productBatch1 = new ProductBatch("Batch #1", packedWeighedProduct);
@@ -38,17 +38,17 @@ public class TestProductsService {
     
     
     @Test
-    void testProductServiceCountByFilterDeep() throws ProductException, ProductsServiceException {
+    void testProductServiceCountByFilterDeep() throws ProductException {
         String description = "Pretty crunchy";
-        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
-        Packaging packagingPiece = new Packaging("Box", 0.25);
+        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12500);
+        Packaging packagingPiece = new Packaging("Box", 250);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
         
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packagingWeighed);
         
-        Packaging packagingPacked = new Packaging("Big box", 0.1);
+        Packaging packagingPacked = new Packaging("Big box", 100);
         PackedProducts packedProducts = new PackedProducts(packagingPacked, packedPieceProduct, packedWeighedProduct);
         
         ProductBatch productBatch1 = new ProductBatch("Batch #1", packedWeighedProduct);
@@ -67,17 +67,17 @@ public class TestProductsService {
     
     
     @Test
-    void testProductServiceCheckAllWeighed() throws ProductException, ProductsServiceException {
+    void testProductServiceCheckAllWeighed() throws ProductException {
         String description = "Pretty crunchy";
-        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
-        Packaging packagingPiece = new Packaging("Box", 0.25);
+        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12500);
+        Packaging packagingPiece = new Packaging("Box", 250);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
         
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packagingWeighed);
         
-        Packaging packagingPacked = new Packaging("Big box", 0.1);
+        Packaging packagingPacked = new Packaging("Big box", 100);
         PackedProducts packedProducts = new PackedProducts(packagingPacked, packedPieceProduct, packedWeighedProduct);
         PackedProducts packedWeighedProducts = new PackedProducts(packagingPacked, packedWeighedProduct, packedWeighedProduct);
         
@@ -95,9 +95,9 @@ public class TestProductsService {
     
     @Test
     void testProductServiceExceptions() throws ProductException {
-        Packaging packaging = new Packaging("Cardboard box", 0.05);
+        Packaging packaging = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packaging);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packaging);
         ProductBatch productBatch = new ProductBatch("Batch #1", packedWeighedProduct);
         Filter filter = new BeginStringFilter("Huge");
         
