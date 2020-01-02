@@ -9,23 +9,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestPieceProduct {
-    private static final double EPS = 1E-6;
-    
-    
     @Test
     void testPieceProduct() throws ProductException {
         String description1 = "A huge pack of pretty little things that gonna make you fat.";
         String description2 = "A carton of hidden happiness.";
-        PieceProduct product1 = new PieceProduct("Huge pack of cookies", description1, 20.5);
-        PieceProduct product2 = new PieceProduct(" Carton of juice  ", description2, 1);
+        PieceProduct product1 = new PieceProduct("Huge pack of cookies", description1, 20500);
+        PieceProduct product2 = new PieceProduct(" Carton of juice  ", description2, 1000);
         
         assertAll(
                 () -> assertEquals("Huge pack of cookies", product1.getName()),
                 () -> assertEquals(description1, product1.getDescription()),
-                () -> assertEquals(20.5, product1.getMass(), EPS),
+                () -> assertEquals(20500, product1.getMass()),
                 () -> assertEquals("Carton of juice", product2.getName()),
                 () -> assertEquals(description2, product2.getDescription()),
-                () -> assertEquals(1, product2.getMass(), EPS)
+                () -> assertEquals(1000, product2.getMass())
         );
     }
     
@@ -96,12 +93,12 @@ public class TestPieceProduct {
         String name2 = "name2";
         String description1 = "description1";
         String description2 = "description2";
-        PieceProduct product1 = new PieceProduct(name1, description1, 1.2);
-        PieceProduct product2 = new PieceProduct(name1, description1, 1.2);
+        PieceProduct product1 = new PieceProduct(name1, description1, 1200);
+        PieceProduct product2 = new PieceProduct(name1, description1, 1200);
         PieceProduct product3 = product1;
-        PieceProduct product4 = new PieceProduct(name2, description1, 1.2);
-        PieceProduct product5 = new PieceProduct(name1, description2, 1.2);
-        PieceProduct product6 = new PieceProduct(name1, description1, 2.8);
+        PieceProduct product4 = new PieceProduct(name2, description1, 1200);
+        PieceProduct product5 = new PieceProduct(name1, description2, 1200);
+        PieceProduct product6 = new PieceProduct(name1, description1, 2800);
         Product product7 = new Product(name1, description1);
         WeighedProduct product8 = new WeighedProduct(name1, description1);
         
@@ -125,10 +122,10 @@ public class TestPieceProduct {
         assertAll(
                 () -> assertEquals("Piece product {“Huge pack of cookies”, " +
                                 "description: “You’ll explode if you eat them all.”, mass: 20.500 kg}",
-                        new PieceProduct("Huge pack of cookies", "You’ll explode if you eat them all.", 20.5).toString()),
+                        new PieceProduct("Huge pack of cookies", "You’ll explode if you eat them all.", 20500).toString()),
                 () -> assertEquals("Piece product {“Carton of juice”, " +
                                 "description: “A carton of hidden happiness.”, mass: 1.000 kg}",
-                        new PieceProduct("Carton of juice", "A carton of hidden happiness.", 1).toString())
+                        new PieceProduct("Carton of juice", "A carton of hidden happiness.", 1000).toString())
         );
     }
 }

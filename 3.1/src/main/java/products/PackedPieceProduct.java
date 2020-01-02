@@ -44,13 +44,13 @@ public class PackedPieceProduct extends PieceProduct implements Packed {
     
     
     @Override
-    public double getNetMass() {
+    public int getNetMass() {
         return quantity * getMass();
     }
     
     
     @Override
-    public double getGrossMass() {
+    public int getGrossMass() {
         return getNetMass() + packaging.getMass();
     }
     

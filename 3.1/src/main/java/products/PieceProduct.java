@@ -2,11 +2,10 @@ package products;
 
 
 public class PieceProduct extends Product {
-    private static final double EPS = 1E-6;
-    protected double mass;
+    protected int mass;
     
     
-    public PieceProduct(String name, String description, double mass) throws ProductException {
+    public PieceProduct(String name, String description, int mass) throws ProductException {
         super(name, description);
         
         setMass(mass);
@@ -20,15 +19,15 @@ public class PieceProduct extends Product {
     }
     
     
-    public void setMass(double mass) throws ProductException {
-        if (mass < EPS)
+    public void setMass(int mass) throws ProductException {
+        if (mass <= 0)
             throw new ProductException(ProductErrorCode.NONPOSITIVE_MASS);
         
         this.mass = mass;
     }
     
     
-    public double getMass() {
+    public int getMass() {
         return mass;
     }
     
@@ -40,12 +39,13 @@ public class PieceProduct extends Product {
         PieceProduct pieceProduct = (PieceProduct) o;
         return name.equals(pieceProduct.name) &&
                 description.equals(pieceProduct.description) &&
-                Math.abs(pieceProduct.mass - mass) <= EPS;
+                pieceProduct.mass == mass;
     }
     
     
     @Override
     public String toString() {
-        return String.format("Piece product {“%s”, description: “%s”, mass: %.3f kg}", name, description, mass);
+        return String.format("Piece product {“%s”, description: “%s”, mass: %d.%03d kg}",
+                name, description, mass / 1000, mass % 1000);
     }
 }

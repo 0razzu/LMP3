@@ -46,8 +46,8 @@ public class ProductBatch {
     }
     
     
-    public double getMass() {
-        double mass = 0;
+    public int getMass() {
+        int mass = 0;
         
         for (Packed packed: packeds)
             mass += packed.getGrossMass();

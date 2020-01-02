@@ -5,12 +5,11 @@ import java.util.Objects;
 
 
 public class Packaging {
-    private static final double EPS = 1E-6;
     private String name;
-    private double mass;
+    private int mass;
     
     
-    public Packaging(String name, double mass) throws ProductException {
+    public Packaging(String name, int mass) throws ProductException {
         setName(name);
         setMass(mass);
     }
@@ -24,8 +23,8 @@ public class Packaging {
     }
     
     
-    public void setMass(double mass) throws ProductException {
-        if (mass <= EPS)
+    public void setMass(int mass) throws ProductException {
+        if (mass <= 0)
             throw new ProductException(ProductErrorCode.NONPOSITIVE_MASS);
         
         this.mass = mass;
@@ -37,7 +36,7 @@ public class Packaging {
     }
     
     
-    public double getMass() {
+    public int getMass() {
         return mass;
     }
     
@@ -46,9 +45,9 @@ public class Packaging {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Packaging)) return false;
-        Packaging aPackaging = (Packaging) o;
-        return Math.abs(aPackaging.mass - mass) <= EPS &&
-                name.equals(aPackaging.name);
+        Packaging that = (Packaging) o;
+        return that.mass == mass &&
+                name.equals(that.name);
     }
     
     
@@ -60,6 +59,6 @@ public class Packaging {
     
     @Override
     public String toString() {
-        return String.format("Packaging {“%s”, mass: %.3f kg}", name, mass);
+        return String.format("Packaging {“%s”, mass: %d.%03d kg}", name, mass / 1000, mass % 1000);
     }
 }

@@ -9,19 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestPackedWeighedProduct {
-    private static final double EPS = 1E-6;
-    
-    
     @Test
     void testPackedWeighedProduct() throws ProductException {
-        Packaging packaging = new Packaging("Cardboard box", 0.005);
+        Packaging packaging = new Packaging("Cardboard box", 5);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packaging);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packaging);
         
         assertAll(
                 () -> assertEquals(product, packedWeighedProduct),
-                () -> assertEquals(3.55, packedWeighedProduct.getNetMass(), EPS),
-                () -> assertEquals(3.555, packedWeighedProduct.getGrossMass(), EPS),
+                () -> assertEquals(3550, packedWeighedProduct.getNetMass()),
+                () -> assertEquals(3555, packedWeighedProduct.getGrossMass()),
                 () -> assertEquals(packaging, packedWeighedProduct.getPackaging())
         );
     }
@@ -30,7 +27,7 @@ public class TestPackedWeighedProduct {
     @Test
     void testPackedWeighedProductExceptions() throws ProductException {
         WeighedProduct weighedProduct = new WeighedProduct("Candies", "Liquorice & salt");
-        Packaging packaging = new Packaging("Cardboard box", 0.005);
+        Packaging packaging = new Packaging("Cardboard box", 5);
         
         try {
             PackedWeighedProduct product1 = new PackedWeighedProduct(null, 1, packaging);
@@ -47,7 +44,7 @@ public class TestPackedWeighedProduct {
         }
         
         try {
-            PackedWeighedProduct product3 = new PackedWeighedProduct(weighedProduct, -2.5, packaging);
+            PackedWeighedProduct product3 = new PackedWeighedProduct(weighedProduct, -2, packaging);
             fail();
         } catch (ProductException e) {
             assertEquals(ProductErrorCode.NONPOSITIVE_MASS, e.getErrorCode());
@@ -64,20 +61,20 @@ public class TestPackedWeighedProduct {
     
     @Test
     void testPackedWeighedProductEquals() throws ProductException {
-        Packaging packaging1 = new Packaging("Cardboard box", 0.01);
-        Packaging packaging2 = new Packaging("Wooden box", 0.2);
+        Packaging packaging1 = new Packaging("Cardboard box", 10);
+        Packaging packaging2 = new Packaging("Wooden box", 200);
         WeighedProduct product1 = new WeighedProduct("Apples", "Manufacturer: Russia");
         WeighedProduct product2 = new WeighedProduct("Apples", "Manufacturer: China");
         WeighedProduct product3 = new WeighedProduct("Tangerines", "Manufacturer: Morocco");
         WeighedProduct product4 = new WeighedProduct("Tangerines", "Manufacturer: China");
         
-        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product1, 10, packaging1);
-        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(product1, 10, packaging1);
-        PackedWeighedProduct packedWeighedProduct3 = new PackedWeighedProduct(product1, 10, packaging2);
-        PackedWeighedProduct packedWeighedProduct4 = new PackedWeighedProduct(product2, 10, packaging1);
-        PackedWeighedProduct packedWeighedProduct5 = new PackedWeighedProduct(product3, 10, packaging1);
-        PackedWeighedProduct packedWeighedProduct6 = new PackedWeighedProduct(product4, 10, packaging1);
-        PackedWeighedProduct packedWeighedProduct7 = new PackedWeighedProduct(product1, 15, packaging1);
+        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product1, 10000, packaging1);
+        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(product1, 10000, packaging1);
+        PackedWeighedProduct packedWeighedProduct3 = new PackedWeighedProduct(product1, 10000, packaging2);
+        PackedWeighedProduct packedWeighedProduct4 = new PackedWeighedProduct(product2, 10000, packaging1);
+        PackedWeighedProduct packedWeighedProduct5 = new PackedWeighedProduct(product3, 10000, packaging1);
+        PackedWeighedProduct packedWeighedProduct6 = new PackedWeighedProduct(product4, 10000, packaging1);
+        PackedWeighedProduct packedWeighedProduct7 = new PackedWeighedProduct(product1, 15000, packaging1);
         
         assertAll(
                 () -> assertEquals(packedWeighedProduct1, packedWeighedProduct2),
@@ -96,13 +93,13 @@ public class TestPackedWeighedProduct {
     void testPackedWeighedProductToString() throws ProductException {
         Locale.setDefault(Locale.ENGLISH);
         
-        Packaging packaging1 = new Packaging("Cardboard box", 0.01);
-        Packaging packaging2 = new Packaging("Wooden box", 0.2);
+        Packaging packaging1 = new Packaging("Cardboard box", 10);
+        Packaging packaging2 = new Packaging("Wooden box", 200);
         WeighedProduct product1 = new WeighedProduct("Apples", "Manufacturer: Russia");
         WeighedProduct product2 = new WeighedProduct("Tangerines", "Manufacturer: China");
         
-        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product1, 10, packaging1);
-        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(product2, 5.5, packaging2);
+        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product1, 10000, packaging1);
+        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(product2, 5500, packaging2);
         
         assertAll(
                 () -> assertEquals("Packed weighed product {" +

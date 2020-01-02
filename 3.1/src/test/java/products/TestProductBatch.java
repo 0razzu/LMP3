@@ -15,15 +15,15 @@ public class TestProductBatch {
     @Test
     void testProductBatch() throws ProductException {
         String description = "Pretty crunchy";
-        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
-        Packaging packagingPiece = new Packaging("Box", 0.25);
+        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12500);
+        Packaging packagingPiece = new Packaging("Box", 250);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
         
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packagingWeighed);
         
-        Packaging packagingPacked = new Packaging("Big box", 0.1);
+        Packaging packagingPacked = new Packaging("Big box", 100);
         PackedProducts packedProducts = new PackedProducts(packagingPacked, packedPieceProduct, packedWeighedProduct);
         
         ProductBatch productBatch = new ProductBatch("Batch #123", packedPieceProduct, packedWeighedProduct, packedProducts);
@@ -34,7 +34,7 @@ public class TestProductBatch {
                         productBatch.getPackeds()),
                 () -> assertEquals(pieceProduct,
                         ((PieceProduct) (((PackedProducts) (productBatch.getPackeds()[2])).getPackeds()[0]))),
-                () -> assertEquals(57.8, productBatch.getMass(), EPS)
+                () -> assertEquals(57800, productBatch.getMass(), EPS)
         );
     }
     
@@ -42,11 +42,11 @@ public class TestProductBatch {
     @Test
     void testProductBatchExceptions() throws ProductException {
         String description = "Pretty crunchy";
-        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
-        Packaging packagingPiece = new Packaging("Box", 0.2);
+        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12500);
+        Packaging packagingPiece = new Packaging("Box", 200);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
         
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
         PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3, packagingWeighed);
         
@@ -92,15 +92,15 @@ public class TestProductBatch {
     @Test
     void testProductBatchEquals() throws ProductException {
         String description = "Pretty crunchy";
-        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
-        Packaging packagingPiece = new Packaging("Box", 0.25);
+        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12500);
+        Packaging packagingPiece = new Packaging("Box", 250);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
         
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packagingWeighed);
         
-        Packaging packagingPacked = new Packaging("Big box", 0.1);
+        Packaging packagingPacked = new Packaging("Big box", 100);
         PackedProducts packedProducts = new PackedProducts(packagingPacked, packedPieceProduct, packedWeighedProduct);
         
         ProductBatch productBatch1 = new ProductBatch("Batch #1", packedPieceProduct, packedWeighedProduct, packedProducts);
@@ -125,15 +125,15 @@ public class TestProductBatch {
         Locale.setDefault(Locale.ENGLISH);
         
         String description = "Pretty crunchy";
-        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
-        Packaging packagingPiece = new Packaging("Box", 0.25);
+        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12500);
+        Packaging packagingPiece = new Packaging("Box", 250);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
         
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packagingWeighed);
         
-        Packaging packagingPacked = new Packaging("Big box", 0.1);
+        Packaging packagingPacked = new Packaging("Big box", 100);
         PackedProducts packedProducts = new PackedProducts(packagingPacked, packedPieceProduct, packedWeighedProduct);
         
         ProductBatch productBatch1 = new ProductBatch("Batch #1", packedWeighedProduct);

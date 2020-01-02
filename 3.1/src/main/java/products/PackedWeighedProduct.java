@@ -5,20 +5,19 @@ import java.util.Objects;
 
 
 public class PackedWeighedProduct extends WeighedProduct implements Packed {
-    private static final double EPS = 1E-6;
     private Packaging packaging;
-    private double mass;
+    private int mass;
     
     
-    public PackedWeighedProduct(WeighedProduct product, double mass, Packaging packaging) throws ProductException {
+    public PackedWeighedProduct(WeighedProduct product, int mass, Packaging packaging) throws ProductException {
         super(product);
         setMass(mass);
         setPackaging(packaging);
     }
     
     
-    private void setMass(double mass) throws ProductException {
-        if (mass < EPS)
+    private void setMass(int mass) throws ProductException {
+        if (mass <= 0)
             throw new ProductException(ProductErrorCode.NONPOSITIVE_MASS);
         
         this.mass = mass;
@@ -34,13 +33,13 @@ public class PackedWeighedProduct extends WeighedProduct implements Packed {
     
     
     @Override
-    public double getNetMass() {
+    public int getNetMass() {
         return mass;
     }
     
     
     @Override
-    public double getGrossMass() {
+    public int getGrossMass() {
         return mass + packaging.getMass();
     }
     
@@ -57,7 +56,7 @@ public class PackedWeighedProduct extends WeighedProduct implements Packed {
         if (!(o instanceof PackedWeighedProduct)) return false;
         if (!super.equals(o)) return false;
         PackedWeighedProduct that = (PackedWeighedProduct) o;
-        return Math.abs(that.mass - mass) < EPS &&
+        return that.mass == mass &&
                 packaging.equals(that.packaging);
     }
     
@@ -70,7 +69,7 @@ public class PackedWeighedProduct extends WeighedProduct implements Packed {
     
     @Override
     public String toString() {
-        return String.format("Packed weighed product {%s, mass: %.3f kg, %s}",
-                super.toString(), mass, packaging);
+        return String.format("Packed weighed product {%s, mass: %d.%03d kg, %s}",
+                super.toString(), mass / 1000, mass % 1000, packaging);
     }
 }

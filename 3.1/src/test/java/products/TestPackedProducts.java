@@ -9,24 +9,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestPackedProducts {
-    private static final double EPS = 1E-6;
-    
-    
     @Test
     void testPackedProducts() throws ProductException {
         String description = "Pretty crunchy";
-        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
-        Packaging packagingPiece = new Packaging("Box", 0.25);
+        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12500);
+        Packaging packagingPiece = new Packaging("Box", 250);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
         
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packagingWeighed);
         
-        Packaging packagingPacked1 = new Packaging("Big packet", 0.2);
+        Packaging packagingPacked1 = new Packaging("Big packet", 200);
         PackedProducts packedProducts1 = new PackedProducts(packagingPacked1, packedPieceProduct);
         
-        Packaging packagingPacked2 = new Packaging("Big box", 0.5);
+        Packaging packagingPacked2 = new Packaging("Big box", 500);
         PackedProducts packedProducts2 = new PackedProducts(packagingPacked2, packedPieceProduct, packedWeighedProduct);
         
         PackedProducts packedProducts3 = new PackedProducts(packagingPacked2, packedProducts1);
@@ -34,33 +31,33 @@ public class TestPackedProducts {
         assertAll(
                 () -> assertEquals(packagingPacked1, packedProducts1.getPackaging()),
                 () -> assertArrayEquals(new Packed[]{packedPieceProduct}, packedProducts1.getPackeds()),
-                () -> assertEquals(25.25, packedProducts1.getNetMass(), EPS),
-                () -> assertEquals(25.45, packedProducts1.getGrossMass(), EPS)
+                () -> assertEquals(25250, packedProducts1.getNetMass()),
+                () -> assertEquals(25450, packedProducts1.getGrossMass())
         );
         
         assertAll(
                 () -> assertEquals(packagingPacked2, packedProducts2.getPackaging()),
                 () -> assertArrayEquals(new Packed[]{packedPieceProduct, packedWeighedProduct}, packedProducts2.getPackeds()),
-                () -> assertEquals(28.85, packedProducts2.getNetMass(), EPS),
-                () -> assertEquals(29.35, packedProducts2.getGrossMass(), EPS)
+                () -> assertEquals(28850, packedProducts2.getNetMass()),
+                () -> assertEquals(29350, packedProducts2.getGrossMass())
         );
         
         assertAll(
                 () -> assertEquals(packagingPacked2, packedProducts3.getPackaging()),
                 () -> assertArrayEquals(new Packed[]{packedProducts1}, packedProducts3.getPackeds()),
-                () -> assertEquals(25.45, packedProducts3.getNetMass(), EPS),
-                () -> assertEquals(25.95, packedProducts3.getGrossMass(), EPS)
+                () -> assertEquals(25450, packedProducts3.getNetMass()),
+                () -> assertEquals(25950, packedProducts3.getGrossMass())
         );
     }
     
     
     @Test
     void testPackedProductsExceptions() throws ProductException {
-        Packaging packaging1 = new Packaging("Cardboard box", 0.05);
+        Packaging packaging1 = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3.55, packaging1);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(product, 3550, packaging1);
         
-        Packaging packaging2 = new Packaging("Big packet", 0.2);
+        Packaging packaging2 = new Packaging("Big packet", 200);
         
         try {
             PackedProducts packedProducts1 = new PackedProducts(null, packedWeighedProduct);
@@ -94,13 +91,13 @@ public class TestPackedProducts {
     
     @Test
     void testPackedProductsEquals() throws ProductException {
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct product = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product, 3.55, packagingWeighed);
-        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(product, 3.9, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct1 = new PackedWeighedProduct(product, 3550, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct2 = new PackedWeighedProduct(product, 3900, packagingWeighed);
         
-        Packaging packaging1 = new Packaging("Big packet", 0.2);
-        Packaging packaging2 = new Packaging("Big box", 0.5);
+        Packaging packaging1 = new Packaging("Big packet", 200);
+        Packaging packaging2 = new Packaging("Big box", 500);
         
         PackedProducts packedProducts1 = new PackedProducts(packaging1, packedWeighedProduct1, packedWeighedProduct2);
         PackedProducts packedProducts2 = new PackedProducts(packaging1, packedWeighedProduct1, packedWeighedProduct2);
@@ -124,16 +121,16 @@ public class TestPackedProducts {
         Locale.setDefault(Locale.ENGLISH);
         
         String description = "Pretty crunchy";
-        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12.5);
-        Packaging packagingPiece = new Packaging("Box", 0.25);
+        PieceProduct pieceProduct = new PieceProduct("Huge pack of cookies", description, 12500);
+        Packaging packagingPiece = new Packaging("Box", 250);
         PackedPieceProduct packedPieceProduct = new PackedPieceProduct(pieceProduct, 2, packagingPiece);
         
-        Packaging packagingWeighed = new Packaging("Cardboard box", 0.05);
+        Packaging packagingWeighed = new Packaging("Cardboard box", 50);
         WeighedProduct weighedProduct = new WeighedProduct("Candies", "Liquorice & salt");
-        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(weighedProduct, 3.55, packagingWeighed);
+        PackedWeighedProduct packedWeighedProduct = new PackedWeighedProduct(weighedProduct, 3550, packagingWeighed);
         
-        Packaging packaging1 = new Packaging("Big packet", 0.2);
-        Packaging packaging2 = new Packaging("Big box", 0.5);
+        Packaging packaging1 = new Packaging("Big packet", 200);
+        Packaging packaging2 = new Packaging("Big box", 500);
         
         PackedProducts packedProducts1 = new PackedProducts(packaging1, packedWeighedProduct);
         PackedProducts packedProducts2 = new PackedProducts(packaging2, packedPieceProduct, packedProducts1);

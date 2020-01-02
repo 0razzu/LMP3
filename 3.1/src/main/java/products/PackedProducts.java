@@ -48,8 +48,8 @@ public class PackedProducts implements Packed {
     
     
     @Override
-    public double getNetMass() {
-        double mass = 0;
+    public int getNetMass() {
+        int mass = 0;
         
         for (Packed packed: packeds)
             mass += packed.getGrossMass();
@@ -59,7 +59,7 @@ public class PackedProducts implements Packed {
     
     
     @Override
-    public double getGrossMass() {
+    public int getGrossMass() {
         return getNetMass() + packaging.getMass();
     }
     
